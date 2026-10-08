@@ -1,0 +1,190 @@
+﻿<div style="position:sticky; top:0; background-color:#ffffff; padding:15px 0; text-align:center; font-family:Arial, sans-serif; box-shadow:0 4px 6px rgba(0,0,0,0.1); z-index:1000; display:flex; flex-direction:column; align-items:center;">
+  <h3 style="margin:2px 0; color:#333; text-align:center;">Mr. Shaaban Saber </h2>
+
+  <div style="margin-top:8px;">
+    <a href="tel:+201062196852" style="display:inline-block; background-color:#007BFF; color:#fff; padding:8px 16px; margin:3px; border-radius:5px; text-decoration:none; font-weight:bold;">
+      📞 01062196852
+    </a>
+    <a href="https://wa.me/+201062196852" target="_blank" style="display:inline-block; background-color:#25D366; color:#fff; padding:8px 16px; margin:3px; border-radius:5px; text-decoration:none; font-weight:bold;">
+      💬 تواصل عبر الواتس
+    </a>
+  </div>
+</div><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1 - Welcome to the Jungle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#FFF8F0;--fg:#2D2A26;--primary:#4a90e2;--secondary:#6c5ce7;--highlight:#fff9c4;--success:#00b894;--danger:#ff7675}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;padding:20px}
+        .stars-overlay{position:fixed;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:center;font-size:60px;z-index:2000;opacity:0;transition:opacity .3s}
+        .stars-overlay.show{opacity:1}
+        .sticky-audio-bar{position:sticky;top:0;z-index:9;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);max-width:800px;margin:0 auto 10px;padding:12px 0;display:flex;justify-content:center;gap:10px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+        .btn-audio-control{border:none;padding:10px 22px;border-radius:50px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:bold;cursor:pointer;color:white;transition:.3s}
+        .audio-play{background-color:#00b894}.audio-pause{background-color:#f1c40f;color:#333;display:none}.audio-stop{background-color:#ff7675;display:none}
+        .settings-bar{background:white;max-width:800px;padding:15px;border-radius:20px;box-shadow:0 4px 15px rgba(0,0,0,.05);display:flex;gap:15px;justify-content:center;margin:0 auto 15px}
+        .main-container{background:white;max-width:800px;margin:0 auto;border-radius:24px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.08);min-height:400px}
+        .section-nav{display:flex;justify-content:center;gap:10px;margin-bottom:20px;border-bottom:2px solid #eee;padding-bottom:15px}
+        .sec-btn{background:#f0f0f0;border:none;padding:10px 22px;border-radius:15px;cursor:pointer;font-weight:bold;font-size:15px;transition:.3s;font-family:'Cairo',sans-serif}
+        .sec-btn.active{background:var(--secondary);color:white}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+        .vocab-item{border:2px solid #f0f0f0;padding:14px 10px;border-radius:18px;text-align:center;cursor:pointer;transition:.3s}
+        .vocab-item:hover{transform:translateY(-5px);border-color:var(--primary)}
+        .vocab-item.active-reading, .sentence-box.active-reading{background:var(--highlight);border-color:orange}
+        .sentence-box{padding:16px;margin:10px 0;border-radius:18px;border-right:6px solid var(--secondary);background:#f9f9f9;cursor:pointer;direction:ltr;text-align:left}
+        .s-en{font-size:20px;font-weight:bold;color:#2d3436;display:block}
+        .s-ar{font-size:16px;color:#636e72;display:block;margin-top:5px;text-align:right}
+        .quiz-card{text-align:center;padding:20px}
+        .opt-btn{display:block;width:100%;padding:16px;margin:10px 0;border:2px solid #ddd;border-radius:18px;font-size:17px;cursor:pointer;background:white;font-weight:bold;font-family:'Cairo',sans-serif}
+        .opt-btn.correct{background:var(--success);color:white}.opt-btn.wrong{background:var(--danger);color:white}
+    </style>
+</head>
+<body>
+<div class="stars-overlay" id="starsOverlay">🌟🎉🌟</div>
+<div class="sticky-audio-bar">
+    <button class="btn-audio-control audio-play" id="lPlay" onclick="app.playAll()">قراءة آلية ▶️</button>
+    <button class="btn-audio-control audio-pause" id="lPause" onclick="app.togglePause()">مؤقت ⏸️</button>
+    <button class="btn-audio-control audio-stop" id="lStop" onclick="app.stop()">إيقاف ⏹️</button>
+</div>
+<div class="settings-bar">
+    <div><label>🐢 السرعة 🐇</label> <input type="range" id="lRate" min="0.3" max="1" step="0.1" value="0.7"></div>
+    <div><label>🌍 اللكنة</label> <select id="lVoice" style="padding:5px;border-radius:10px;"></select></div>
+</div>
+<div class="main-container">
+    <div class="section-nav" id="lNav">
+        <button class="sec-btn active" onclick="app.switchSec('vocab')">🔤 الكلمات</button>
+        <button class="sec-btn" onclick="app.switchSec('story')">📖 المحادثة</button>
+        <button class="sec-btn" onclick="app.switchSec('quiz')">✍️ اختبار</button>
+    </div>
+    <h2 style="text-align:center;color:var(--secondary);margin-bottom:15px;">Lesson 1: Welcome to the Jungle</h2>
+    <div id="lContent"></div>
+</div>
+<script>
+const synth=window.speechSynthesis;
+function loadVoices(){
+    let voices=synth.getVoices();
+    const norm=l=>(l||'').toLowerCase().replace('_','-');
+    let enV=voices.filter(v=>{const l=norm(v.lang);return l.startsWith('en')});
+    const sel=document.getElementById('lVoice');
+    if(!sel || !enV.length) return;
+    sel.innerHTML='';
+    enV.forEach(v=>{
+        const o=document.createElement('option');
+        o.value=v.name;
+        o.textContent=(norm(v.lang).startsWith('en-gb')?'🇬🇧 ':'🇺🇸 ')+v.name;
+        sel.appendChild(o);
+    });
+}
+synth.onvoiceschanged=loadVoices; loadVoices();
+
+const lessonData={
+    vocab:[{en:"Lion",ar:"أسد",emoji:"🦁"},{en:"Tiger",ar:"نمر",emoji:"🐯"},{en:"Monkey",ar:"قرد",emoji:"🐒"},{en:"Elephant",ar:"فيل",emoji:"🐘"},{en:"Giraffe",ar:"زرافة",emoji:"🦒"},{en:"Snake",ar:"ثعبان",emoji:"🐍"},{en:"Ground",ar:"الأرض",emoji:"🟫"},{en:"Jungle",ar:"غابة",emoji:"🌴"}],
+    story:[{en:"Omar: Look! What's this?",ar:"عمر: انظري! ما هذا؟"},{en:"Leila: It's a lion.",ar:"ليلى: هذا أسد."},{en:"Omar: How many lions can you see?",ar:"عمر: كم عدد الأسود التي يمكنك رؤيتها؟"},{en:"Leila: I can see 2 lions!",ar:"ليلى: أستطيع أن أرى أسدين!"},{en:"Omar: How many legs does a tiger have?",ar:"عمر: كم عدد أرجل النمر؟"},{en:"Leila: A tiger has 4 legs.",ar:"ليلى: النمر لديه أربع أرجل."},{en:"Omar: Where is the monkey?",ar:"عمر: أين القرد؟"},{en:"Leila: The monkey is in the tree!",ar:"ليلى: القرد داخل الشجرة!"},{en:"Omar: I see an elephant and a giraffe too!",ar:"عمر: أنا أرى فيلًا وزرافة أيضًا!"},{en:"Leila: And look! There is a snake on the ground!",ar:"ليلى: وانظر! هناك ثعبان على الأرض!"},{en:"Both: We love the jungle!",ar:"الاثنان: نحن نحب الغابة!"}]
+};
+
+let currentSec='vocab', isPlaying=false, isPaused=false;
+function el(id){return document.getElementById('l'+id);}
+
+function switchSec(sec){
+    currentSec=sec;
+    const map={vocab:'الكلمات',story:'المحادثة',quiz:'اختبار'};
+    el('Nav').querySelectorAll('.sec-btn').forEach(b=>b.classList.toggle('active',b.innerText.includes(map[sec])));
+    render();
+}
+
+function render(){
+    stop();
+    const area=el('Content'); area.innerHTML='';
+    if(currentSec==='vocab'){
+        const g=document.createElement('div'); g.className='vocab-grid';
+        lessonData.vocab.forEach(v=>{
+            const d=document.createElement('div'); d.className='vocab-item';
+            d.innerHTML=`<span style="font-size:36px;display:block;">${v.emoji}</span><b style="color:var(--primary);font-size:17px;">${v.en}</b><br><small>${v.ar}</small>`;
+            d.onclick=()=>speak(v.en,d);
+            g.appendChild(d);
+        });
+        area.appendChild(g);
+    }else if(currentSec==='story'){
+        lessonData.story.forEach(s=>{
+            const b=document.createElement('div'); b.className='sentence-box';
+            b.innerHTML=`<span class="s-en">${s.en}</span><span class="s-ar">${s.ar}</span>`;
+            b.onclick=()=>speak(s.en,b);
+            area.appendChild(b);
+        });
+    }else{ renderQuiz(); }
+}
+
+function speak(text,element,callback){
+    synth.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    const sel=el('Voice');
+    const chosen=synth.getVoices().find(v=>v.name===sel.value);
+    if(chosen) u.voice=chosen;
+    u.rate=parseFloat(el('Rate').value);
+    u.onstart=()=>element?.classList.add('active-reading');
+    u.onend=()=>{ element?.classList.remove('active-reading'); if(callback) callback(); };
+    synth.speak(u);
+}
+
+async function playAll(){
+    if(isPlaying) return;
+    isPlaying=true; isPaused=false;
+    el('Play').style.display='none'; el('Stop').style.display='inline-block'; el('Pause').style.display='inline-block';
+    const items=el('Content').querySelectorAll(currentSec==='vocab'?'.vocab-item':'.sentence-box');
+    const d=currentSec==='vocab'?lessonData.vocab:lessonData.story;
+    for(let i=0;i<items.length;i++){
+        if(!isPlaying) break;
+        while(isPaused && isPlaying) await new Promise(r=>setTimeout(r,100));
+        if(!isPlaying) break;
+        items[i].scrollIntoView({behavior:'smooth',block:'center'});
+        await new Promise(res=>speak(d[i].en,items[i],res));
+        await new Promise(r=>setTimeout(r,600));
+    }
+    stop();
+}
+
+function togglePause(){
+    isPaused=!isPaused;
+    el('Pause').textContent=isPaused?'استئناف ▶️':'مؤقت ⏸️';
+    isPaused?synth.pause():synth.resume();
+}
+
+function stop(){
+    isPlaying=false; isPaused=false; synth.cancel();
+    el('Play').style.display='inline-block'; el('Stop').style.display='none'; el('Pause').style.display='none';
+    el('Pause').textContent='مؤقت ⏸️';
+    document.querySelectorAll('.active-reading').forEach(e=>e.classList.remove('active-reading'));
+}
+
+function renderQuiz(){
+    const area=el('Content');
+    const correct=lessonData.vocab[Math.floor(Math.random()*lessonData.vocab.length)];
+    let opts=[correct.ar];
+    while(opts.length<3){
+        let r=lessonData.vocab[Math.floor(Math.random()*lessonData.vocab.length)].ar;
+        if(!opts.includes(r)) opts.push(r);
+    }
+    opts.sort(()=>Math.random()-.5);
+    area.innerHTML=`<div class="quiz-card"><h3>ما معنى كلمة: <span style="color:var(--primary);font-size:28px;">${correct.en}</span>؟</h3>${opts.map(o=>`<button class="opt-btn" onclick="checkAns(this,'${o}','${correct.ar}')">${o}</button>`).join('')}</div>`;
+}
+
+function checkAns(btn,selected,correct){
+    if(selected===correct){
+        btn.classList.add('correct');
+        document.getElementById('starsOverlay').classList.add('show');
+        setTimeout(()=>document.getElementById('starsOverlay').classList.remove('show'),900);
+        speak("Great job!",null,()=>setTimeout(renderQuiz,1200));
+    }else{
+        btn.classList.add('wrong');
+        speak("Try again",null);
+    }
+}
+
+const app={switchSec,playAll,togglePause,stop,checkAns};
+window.onload=render;
+</script>
+</body>
+</html>

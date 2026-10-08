@@ -1,0 +1,660 @@
+﻿<div style="position:sticky; top:0; background-color:#ffffff; padding:15px 0; text-align:center; font-family:Arial, sans-serif; box-shadow:0 4px 6px rgba(0,0,0,0.1); z-index:1000; display:flex; flex-direction:column; align-items:center;">
+  <h3 style="margin:2px 0; color:#333; text-align:center;">Mr. Shaaban Saber </h2>
+
+  <div style="margin-top:8px;">
+    <a href="tel:+201062196852" style="display:inline-block; background-color:#007BFF; color:#fff; padding:8px 16px; margin:3px; border-radius:5px; text-decoration:none; font-weight:bold;">
+      📞 01062196852
+    </a>
+    <a href="https://wa.me/+201062196852" target="_blank" style="display:inline-block; background-color:#25D366; color:#fff; padding:8px 16px; margin:3px; border-radius:5px; text-decoration:none; font-weight:bold;">
+      💬 تواصل عبر الواتس
+    </a>
+  </div>
+</div><!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👗📖 Full Lesson: The Hundred Dresses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f4f8; --card-color: #ffffff; --accent-color: #7b1fa2;
+            --text-color: #212121; --highlight-color: #e1bee7; --speak-highlight: #4a148c;
+            --play-all-btn: #8e24aa; --secondary-text-color: #424242; --border-color: #ce93d8;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-color); margin: 0; padding: 20px; text-align: center; color: var(--text-color); transition: background-color 0.3s; }
+        .container { max-width: 1000px; margin: 0 auto 50px auto; background-color: var(--card-color); border-radius: 25px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); padding: 40px; border: 8px solid var(--accent-color); transition: border-color 0.3s; }
+        h1 { color: var(--accent-color); font-size: 2.5em; margin-bottom: 10px; }
+        h2 { color: var(--speak-highlight); border-bottom: 2px solid var(--border-color); display: inline-block; padding-bottom: 5px; }
+        h3 { background-color: var(--highlight-color); padding: 12px; border-radius: 10px; margin-top: 30px; text-align: right; direction: ltr; font-size: 1.6em; }
+
+        .speech-controls { background: #f3e5f5; padding: 15px; border-radius: 15px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; align-items: center; }
+        .control-group { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+        #speed-value { min-width: 32px; display: inline-block; font-weight: bold; color: var(--accent-color); }
+
+        .theme-switcher { display: flex; gap: 8px; align-items: center; }
+        .theme-dot { width: 26px; height: 26px; border-radius: 50%; cursor: pointer; border: 2px solid #fff; box-shadow: 0 0 0 1px #999; }
+        .theme-dot.active { box-shadow: 0 0 0 2px #333; }
+
+        .table-wrap { width: 100%; overflow-x: auto; }
+        table { width: 100%; min-width: 320px; border-collapse: separate; border-spacing: 0; margin-top: 15px; text-align: right; direction: ltr; border-radius: 15px; overflow: hidden; }
+        th, td { border: 1px solid var(--border-color); padding: 12px; }
+        th { background-color: var(--accent-color); color: white; }
+        td:nth-child(odd) { background-color: #f3e5f5; }
+
+        .play-btn { background-color: var(--play-all-btn); color: white; border: none; padding: 12px 25px; border-radius: 12px; cursor: pointer; font-size: 1.1em; box-shadow: 0 5px #6a1b9a; margin: 10px 0; }
+        .play-btn:active { transform: translateY(3px); box-shadow: 0 2px #6a1b9a; }
+
+        .vocab-element, .english-sentence { cursor: pointer; transition: 0.2s; padding: 2px 5px; border-radius: 4px; display: inline-block; font-family: 'Roboto', sans-serif; font-weight: 700; color: #1a237e; }
+        .vocab-element:hover, .english-sentence:hover { background-color: var(--highlight-color); }
+        .english-sentence { display: block; text-align: left; font-size: 1.2em; margin-bottom: 5px; color: #000; }
+        .speaking-highlight { background-color: var(--speak-highlight) !important; color: white !important; }
+        .arabic-translation { display: block; text-align: right; color: var(--secondary-text-color); border-bottom: 1px dashed #ccc; margin-bottom: 15px; padding-bottom: 5px; font-size: 1.05em; font-weight: bold; }
+
+        .dialogue-line { display: flex; margin-bottom: 10px; background: #f9f9f9; padding: 15px; border-radius: 10px; direction: ltr; }
+        .speaker { font-weight: bold; color: var(--accent-color); min-width: 80px; text-align: left; margin-right: 10px; }
+
+        .floating-stop-btn { position: fixed; bottom: 25px; right: 25px; z-index: 1000; background:#d32f2f; color:white; border:none; border-radius:50%; width:64px; height:64px; font-size:1.6em; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,0.35); display:flex; align-items:center; justify-content:center; transition: transform 0.15s; }
+        .floating-stop-btn:active { transform: scale(0.92); }
+
+        .quiz-question { background:#f9f9f9; border:2px solid var(--border-color); border-radius:12px; padding:15px; margin-bottom:15px; text-align:left; direction:ltr; }
+        .quiz-question p.q-text { font-size:1.15em; font-weight:bold; margin:0 0 10px 0; color:var(--text-color); }
+        .quiz-options { display:flex; flex-direction:column; gap:8px; }
+        .quiz-option { background:#fff; border:2px solid var(--border-color); border-radius:8px; padding:10px 15px; cursor:pointer; text-align:left; font-family:'Roboto',sans-serif; font-weight:700; transition:0.2s; }
+        .quiz-option:hover { background: var(--highlight-color); }
+        .quiz-option.correct { background:#a5d6a7 !important; border-color:#2e7d32; }
+        .quiz-option.wrong { background:#ef9a9a !important; border-color:#c62828; }
+        .quiz-score { font-size:1.3em; font-weight:bold; color:var(--accent-color); margin-top:15px; }
+        #quiz-progress { font-weight:bold; color:var(--secondary-text-color); margin-bottom:8px; }
+        .quiz-feedback { font-size:1.4em; font-weight:bold; margin-top:10px; min-height:1.4em; }
+        .quiz-feedback.correct { color:#2e7d32; }
+        .quiz-feedback.wrong { color:#c62828; }
+        .confetti-piece { position:absolute; top:10%; width:8px; height:8px; opacity:0.95; pointer-events:none; animation: confetti-fall 1.1s ease-out forwards; }
+        @keyframes confetti-fall { to { transform: translate(var(--x), 200px) rotate(720deg); opacity:0; } }
+
+        .reading-sentence { display: block; text-align: left; font-size: 1.15em; margin-bottom: 8px; color: #000; cursor: pointer; transition: 0.2s; padding: 8px 12px; border-radius: 8px; font-family: 'Roboto', sans-serif; font-weight: 700; }
+        .reading-sentence:hover { background-color: var(--highlight-color); }
+        .reading-translation { display: block; text-align: right; color: var(--secondary-text-color); border-bottom: 1px dashed #ccc; margin-bottom: 12px; padding-bottom: 5px; font-size: 1em; font-weight: bold; }
+
+        .story-section { margin-bottom: 25px; border: 2px solid var(--border-color); border-radius: 15px; padding: 15px; background: #fafafa; }
+        .story-section-title { font-size: 1.4em; font-weight: bold; color: var(--accent-color); margin-bottom: 15px; text-align: left; padding: 8px 12px; border-radius: 8px; background: var(--highlight-color); }
+        .story-section.beginning .story-section-title { background: #c8e6c9; }
+        .story-section.middle .story-section-title { background: #fff9c4; }
+        .story-section.end .story-section-title { background: #ffcdd2; }
+
+        .moral-box { background: #f3e5f5; border: 3px solid var(--accent-color); border-radius: 15px; padding: 20px; margin-top: 20px; text-align: left; direction: ltr; }
+        .moral-box .moral-title { font-size: 1.3em; font-weight: bold; color: var(--speak-highlight); margin-bottom: 10px; }
+        .moral-box .moral-text { font-family: 'Roboto', sans-serif; font-size: 1.2em; font-weight: 700; color: #1a237e; cursor: pointer; padding: 5px; border-radius: 5px; transition: 0.2s; }
+        .moral-box .moral-text:hover { background-color: var(--highlight-color); }
+        .moral-box .moral-trans { text-align: right; color: var(--secondary-text-color); font-size: 1.05em; font-weight: bold; margin-top: 5px; }
+
+        .char-box { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 15px 0; }
+        .char-card { background: #fafafa; border: 2px solid var(--border-color); border-radius: 15px; padding: 15px; min-width: 140px; text-align: center; }
+        .char-card .char-name { font-weight: bold; color: var(--accent-color); font-size: 1.2em; margin-top: 8px; }
+        .char-card .char-desc { color: var(--secondary-text-color); font-size: 0.95em; margin-top: 4px; }
+
+        .setting-box { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 15px 0; }
+        .setting-card { background: #fafafa; border: 2px solid var(--border-color); border-radius: 15px; padding: 15px; min-width: 200px; text-align: left; direction: ltr; }
+        .setting-card h4 { color: var(--accent-color); margin: 0 0 8px 0; }
+        .setting-card ul { margin: 0; padding-left: 20px; }
+
+        .definition-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0; padding: 10px; background: #fafafa; border-radius: 8px; border: 1px solid var(--border-color); }
+        .definition-row .def-word { font-weight: bold; color: var(--accent-color); min-width: 100px; text-align: left; direction: ltr; }
+        .definition-row .def-meaning { color: var(--secondary-text-color); min-width: 120px; text-align: right; }
+        .definition-row .def-text { flex: 1; text-align: left; direction: ltr; font-family: 'Roboto', sans-serif; }
+        .definition-row .def-ar { flex: 1; text-align: right; color: var(--secondary-text-color); font-size: 0.95em; }
+
+        /* ===== Responsive: tablets & phones ===== */
+        @media (max-width: 700px) {
+            body { padding: 10px; }
+            .container { padding: 20px 15px; border-radius: 18px; border-width: 5px; }
+            h1 { font-size: 1.7em; }
+            h3 { font-size: 1.2em; padding: 10px; }
+            .speech-controls { padding: 10px; gap: 10px; }
+            .control-group { font-size: 0.9em; }
+            th, td { padding: 8px 6px; font-size: 0.9em; }
+            .play-btn { padding: 10px 18px; font-size: 1em; width: 100%; }
+            .dialogue-line { flex-direction: column; padding: 10px; }
+            .speaker { margin-bottom: 4px; }
+            .english-sentence, .reading-sentence { font-size: 1.05em; }
+            .floating-stop-btn { width: 52px; height: 52px; font-size: 1.3em; bottom: 15px; right: 15px; }
+            .story-section-title { font-size: 1.15em; }
+            .definition-row { flex-direction: column; }
+            .char-card { min-width: 120px; }
+        }
+        @media (max-width: 420px) {
+            th, td { padding: 6px 4px; font-size: 0.8em; }
+            h1 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>👗📖 Stories from Life 📖</h1>
+    <h2>Story Time - The Hundred Dresses</h2>
+
+    <div class="speech-controls">
+        <div class="control-group"><label>🗣️ اللكنة:</label>
+            <select id="voice-select"><option value="en-US">American (US) 🇺🇸</option><option value="en-GB">British (UK) 🇬🇧</option></select>
+        </div>
+        <div class="control-group"><label>⚡ السرعة:</label>
+            <input type="range" id="speed-slider" min="0.5" max="1.2" value="0.9" step="0.1">
+            <span id="speed-value">0.9x</span>
+        </div>
+        <div class="theme-switcher">
+            <label>🎨</label>
+            <span class="theme-dot active" data-theme="purple" style="background:#7b1fa2;"></span>
+            <span class="theme-dot" data-theme="blue" style="background:#1565c0;"></span>
+            <span class="theme-dot" data-theme="orange" style="background:#ef6c00;"></span>
+        </div>
+    </div>
+
+    <button id="play-all-vocab-btn" class="play-btn">▶️ نطق جميع الكلمات والأفعال</button>
+
+    <h3>👥 The Characters (الشخصيات)</h3>
+    <div class="char-box">
+        <div class="char-card">
+            <div class="char-name">👧 Wanda</div>
+            <div class="char-desc">فتاة هادئة تجلس في آخر الفصل</div>
+        </div>
+        <div class="char-card">
+            <div class="char-name">👩 Peggy</div>
+            <div class="char-desc">فتاة محبوبة في المدرسة</div>
+        </div>
+        <div class="char-card">
+            <div class="char-name">👓 Maddie</div>
+            <div class="char-desc">صديقة Peggy، خجولة</div>
+        </div>
+        <div class="char-card">
+            <div class="char-name">👩‍🏫 Miss Mason</div>
+            <div class="char-desc">المعلمة</div>
+        </div>
+    </div>
+
+    <h3>🌍 The Setting (المكان والزمان)</h3>
+    <div class="setting-box">
+        <div class="setting-card">
+            <h4>📍 Places (الأماكن)</h4>
+            <ul>
+                <li>At a small school</li>
+                <li>In the playground</li>
+                <li>In the classroom</li>
+            </ul>
+        </div>
+        <div class="setting-card">
+            <h4>⏰ Time (الوقت)</h4>
+            <ul>
+                <li>On the school day</li>
+                <li>Every morning</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>📚 I Vocabulary (المفردات الأساسية)</h3>
+    <div class="table-wrap">
+        <table id="main-vocab">
+            <tbody>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">dress</span></td><td>فستان</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">closet</span></td><td>خزانة (دولاب) ملابس</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">playground</span></td><td>ملعب</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">competition</span></td><td>مسابقة</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">announce</span></td><td>يعلن</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">drawings</span></td><td>رسومات</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">sign</span></td><td>توقيع / يوقع</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">letter</span></td><td>خطاب</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">winner</span></td><td>فائز</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">medal</span></td><td>ميدالية</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">laugh</span></td><td>يضحك</td><td></td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>➕ Extra Vocabulary (مفردات إضافية)</h3>
+    <div class="table-wrap">
+        <table id="extra-vocab">
+            <tbody>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">quiet</span></td><td>هادئ</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">faded</span></td><td>باهت</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">popular</span></td><td>مشهور / محبوب</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">annoying</span></td><td>يزعج</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">absent</span></td><td>غائب</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">notice</span></td><td>يلاحظ</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">behavior</span></td><td>سلوك</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">expensive</span></td><td>غالي الثمن</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">bullying</span></td><td>تنمر</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">apologize</span></td><td>يعتذر</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">annual</span></td><td>سنوي</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">covered with</span></td><td>مغطى بـ</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">terrible</span></td><td>فظيع / بالأسى</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">unkindness</span></td><td>قسوة</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">experience</span></td><td>تجربة</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>📖 Definitions (التعريفات)</h3>
+    <div style="text-align:left; direction:ltr; margin-top:15px;">
+        <div class="definition-row">
+            <div class="def-word">faded</div>
+            <div class="def-meaning">باهت</div>
+            <div class="def-text">light in color because it is old or used</div>
+            <div class="def-ar">فاتح اللون لأنه قديم أو مستخدم</div>
+        </div>
+        <div class="definition-row">
+            <div class="def-word">popular</div>
+            <div class="def-meaning">مشهور / محبوب</div>
+            <div class="def-text">known by many people</div>
+            <div class="def-ar">مشهور من قبل الكثير من الناس</div>
+        </div>
+        <div class="definition-row">
+            <div class="def-word">annoying</div>
+            <div class="def-meaning">يزعج</div>
+            <div class="def-text">making you feel unhappy or a little angry</div>
+            <div class="def-ar">يجعلك تشعر بعدم السعادة أو بالغضب قليلاً</div>
+        </div>
+        <div class="definition-row">
+            <div class="def-word">absent</div>
+            <div class="def-meaning">غائب</div>
+            <div class="def-text">not in a place</div>
+            <div class="def-ar">ليس في المكان</div>
+        </div>
+        <div class="definition-row">
+            <div class="def-word">notice</div>
+            <div class="def-meaning">يلاحظ</div>
+            <div class="def-text">to see or hear something</div>
+            <div class="def-ar">أن ترى أو تسمع شيئاً ما</div>
+        </div>
+        <div class="definition-row">
+            <div class="def-word">behavior</div>
+            <div class="def-meaning">سلوك</div>
+            <div class="def-text">the way someone acts</div>
+            <div class="def-ar">طريقة تصرف شخص ما</div>
+        </div>
+        <div class="definition-row">
+            <div class="def-word">expensive</div>
+            <div class="def-meaning">غالي الثمن</div>
+            <div class="def-text">costs a lot of money</div>
+            <div class="def-ar">يكلف الكثير من المال</div>
+        </div>
+        <div class="definition-row">
+            <div class="def-word">bullying</div>
+            <div class="def-meaning">تنمر</div>
+            <div class="def-text">hurting or scaring other people</div>
+            <div class="def-ar">إيذاء أو تخويف الأشخاص الآخرين</div>
+        </div>
+        <div class="definition-row">
+            <div class="def-word">apologize</div>
+            <div class="def-meaning">يعتذر</div>
+            <div class="def-text">to say "I'm sorry" when you do something wrong</div>
+            <div class="def-ar">أن تقول "أنا آسف" عندما تفعل شيئاً خاطئاً</div>
+        </div>
+    </div>
+
+    <h3>🔗 Important Expressions (تعبيرات مهمة)</h3>
+    <div class="table-wrap">
+        <table id="expressions">
+            <tbody>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">lined up</span></td><td>يصطف / مصفوفة</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">in the back of</span></td><td>في الخلف</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">make fun of</span></td><td>يسخر من</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">speak up</span></td><td>يتكلم بصوت عالٍ / يدافع</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">write back</span></td><td>يرد على خطاب</td><td><span class="vocab-element" onclick="speak(this.innerText,this)">keep my drawings</span></td><td>احتفظ برسوماتي</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>🔄 Conjugation of Verbs (تصريف الأفعال)</h3>
+    <div class="table-wrap">
+        <table id="verbs">
+            <thead><tr><th>Present (مضارع)</th><th>Past (ماضي)</th><th>المعنى</th></tr></thead>
+            <tbody>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">announce</span></td><td><span class="vocab-element" onclick="speak(this.innerText,this)">announced</span></td><td>يعلن</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">draw</span></td><td><span class="vocab-element" onclick="speak(this.innerText,this)">drew</span></td><td>يرسم</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">win</span></td><td><span class="vocab-element" onclick="speak(this.innerText,this)">won</span></td><td>يفوز</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">move</span></td><td><span class="vocab-element" onclick="speak(this.innerText,this)">moved</span></td><td>ينتقل</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">receive</span></td><td><span class="vocab-element" onclick="speak(this.innerText,this)">received</span></td><td>يستلم</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">apologize</span></td><td><span class="vocab-element" onclick="speak(this.innerText,this)">apologized</span></td><td>يعتذر</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">promise</span></td><td><span class="vocab-element" onclick="speak(this.innerText,this)">promised</span></td><td>يوعد</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>🗣️ Key Sentences (جمل أساسية)</h3>
+    <div class="table-wrap">
+        <table id="key-sentences">
+            <tbody>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">Wanda was a quiet girl who sat in the back of the classroom.</span></td><td>كانت واندا فتاة هادئة تجلس في آخر الفصل.</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">Wanda always wore the same faded blue dress every day.</span></td><td>كانت واندا ترتدي دائماً نفس الفستان الأزرق الباهت كل يوم.</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">The popular girls at school annoyed Wanda every morning.</span></td><td>كانت الفتيات المحبوبات في المدرسة يزعجن واندا كل صباح.</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">Miss Mason announced a drawing competition.</span></td><td>أعلنت المعلمة ميسون مسابقة الرسم.</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">Wanda won the competition, but she wasn't there to receive her medal.</span></td><td>فازت واندا بالمسابقة، لكنها لم تحضر لتستلم ميداليتها.</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">Peggy and Maddie wrote a letter to Wanda to apologize.</span></td><td>كتبت بيجي ومادي خطاباً إلى واندا ليعتذروا.</td></tr>
+                <tr><td><span class="vocab-element" onclick="speak(this.innerText,this)">They promised to always speak up if there was bullying.</span></td><td>وعدوا أن يتحدثوا دائماً عندما يكون هناك أي تنمر.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>📖 Story: The Hundred Dresses</h3>
+    <button id="play-all-story-btn" class="play-btn">▶️ نطق القصة كاملاً</button>
+    <div id="story-container" style="text-align:left; border: 2px solid var(--accent-color); padding: 20px; border-radius: 15px; margin-top:10px;">
+
+        <div class="story-section beginning">
+            <div class="story-section-title">🟢 The Beginning - Wanda Talked About Her Dresses</div>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">In a small school, there was a girl named Wanda.</span>
+            <span class="reading-translation">في مدرسة صغيرة، كانت هناك فتاة تُدعى واندا.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">She was a quiet girl who sat in the back of the classroom.</span>
+            <span class="reading-translation">كانت فتاة هادئة تجلس في آخر الفصل.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Wanda always wore the same faded blue dress every day.</span>
+            <span class="reading-translation">كانت واندا ترتدي دائماً نفس الفستان الأزرق الباهت كل يوم.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Despite this, Wanda told everyone she had a hundred beautiful dresses at home, all lined up in her closet.</span>
+            <span class="reading-translation">ومع ذلك، كانت واندا تخبر الجميع أن لديها مائة من الفساتين الجميلة في المنزل، جميعها مصفوفة في خزانتها.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">The popular girls at school, especially Peggy and Maddie, annoyed Wanda every morning.</span>
+            <span class="reading-translation">كانت الفتيات المحبوبات في المدرسة، وخاصة بيجي ومادي، يزعجن واندا كل صباح.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">One day, while they were in the playground, Peggy said, "Hey, Wanda, tell us about your hundred dresses!"</span>
+            <span class="reading-translation">في أحد الأيام، بينما كن في الملعب، قالت بيجي: "يا واندا، أخبرينا عن فساتينك المائة!"</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">The other girls laughed. Maddie didn't like how they were annoying Wanda, but she stayed quiet.</span>
+            <span class="reading-translation">ضحكت الفتيات الأخريات. لم يُعجب مادي بإزعاجهن لواندا، لكنها التزمت الصمت.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Maddie was afraid of losing Peggy's friendship.</span>
+            <span class="reading-translation">كانت مادي تخشى فقدان صداقة بيجي.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Soon, most of the girls were annoying Wanda and laughing about her hundred dresses.</span>
+            <span class="reading-translation">وسرعان ما أصبحت معظم الفتيات يزعجن واندا ويضحكن على فساتينها المائة.</span>
+        </div>
+
+        <div class="story-section middle">
+            <div class="story-section-title">🟡 The Middle - A Drawing Competition</div>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">One day, Miss Mason, the teacher, announced that it was time for the annual drawing competition.</span>
+            <span class="reading-translation">في أحد الأيام، أعلنت المعلمة ميسون عن موعد مسابقة الرسم السنوية.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Miss Mason said, "I will choose one boy and one girl as winners."</span>
+            <span class="reading-translation">قالت ميسون: "سأختار ولداً واحداً وفتاة واحدة ليكونوا الفائزين."</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">When it was time to announce the winners, to everyone's surprise, the walls were covered with a hundred beautiful drawings of dresses of all colors and designs.</span>
+            <span class="reading-translation">وعندما حان وقت إعلان الفائزين، ولدهشة الجميع، غُطيت الجدران بمائة رسمة جميلة لفساتين من جميع الألوان والتصاميم.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Wanda drew and signed all the drawings.</span>
+            <span class="reading-translation">رسمت واندا جميع الرسومات ووقعت عليها.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">She won the competition, but she wasn't there to receive her medal.</span>
+            <span class="reading-translation">فازت بالمسابقة، لكنها لم تحضر لتستلم ميداليتها.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Wanda was absent for several days, but no one noticed.</span>
+            <span class="reading-translation">غابت واندا لعدة أيام، لكن لم يلاحظ أحد.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Miss Mason read a letter from Wanda's dad, saying that Wanda's family moved to the big city, where they wouldn't face unkindness.</span>
+            <span class="reading-translation">قرأت الأستاذة ميسون خطاباً من والد واندا، تفيد بأن عائلة واندا انتقلت إلى المدينة الكبيرة، حيث لن يواجهوا أي قسوة.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Peggy and Maddie felt terrible.</span>
+            <span class="reading-translation">شعرت بيجي ومادي بالحزن.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">They realized that when Wanda talked about her hundred dresses, she meant those drawings, her dreams on paper.</span>
+            <span class="reading-translation">أدركنا أن واندا عندما تحدثت عن فساتينها المائة، كانت تعني تلك الرسومات - أحلامها المكتوبة على الورق.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Maddie said to Peggy, "We need to write to Wanda and apologize."</span>
+            <span class="reading-translation">قالت مادي لبيجي: "علينا أن نكتب إلى واندا ونعتذر."</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">They wrote her a letter, saying, "Wanda, your drawings are beautiful and amazing. It's very sad that you aren't here to receive your medal. We are sorry for our behavior and hope that you're happy at your new school."</span>
+            <span class="reading-translation">كتبتا لها خطاباً قائلتين: "واندا، رسوماتك جميلة ورائعة. من المحزن جداً أنكِ لستِ هنا لاستلام ميداليتك. نأسف لسلوكنا ونأمل أن تكوني سعيدة في مدرستك الجديدة."</span>
+        </div>
+
+        <div class="story-section end">
+            <div class="story-section-title">🔴 The End - The Experience Changed Peggy and Maddie Forever</div>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Wanda received the letter at her new school.</span>
+            <span class="reading-translation">استلمت واندا الخطاب في مدرستها الجديدة.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">She was happy when she learned that the letter was from Maddie and Peggy.</span>
+            <span class="reading-translation">كانت سعيدة عندما علمت أن الخطاب من مادي وبيجي.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">Then, Wanda wrote back to them, saying, "Thank you for your letter. I'm happy at my new school, and I want you to keep my drawings."</span>
+            <span class="reading-translation">ثم كتبت واندا رداً عليهم قائلة: "شكراً لكم على خطابكما. أنا سعيدة في مدرستي الجديدة وأريدكما أن تحتفظا برسوماتي."</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">This experience changed Peggy and Maddie forever.</span>
+            <span class="reading-translation">غيرت هذه التجربة بيجي ومادي للأبد.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">They learned that kindness matters more than expensive clothes.</span>
+            <span class="reading-translation">لقد تعلموا أن الأشياء الطيبة تبدو أكثر قيمة من الملابس غالية الثمن.</span>
+            <span class="reading-sentence" onclick="speak(this.innerText,this)">They promised to always speak up if there was bullying.</span>
+            <span class="reading-translation">وعدوا أن يتحدثوا دائماً عندما يكون هناك أي تنمر.</span>
+        </div>
+
+        <div class="moral-box">
+            <div class="moral-title">📜 The Moral Lesson of the Story:</div>
+            <span class="moral-text" onclick="speak(this.innerText,this)">We shouldn't judge others by their appearance.</span>
+            <div class="moral-trans">لا يجب أن نحكم على الأشخاص من مظهرهم.</div>
+        </div>
+
+    </div>
+
+    <h3>📝 Quick Quiz (اختبار سريع)</h3>
+    <div id="quiz-progress"></div>
+    <div id="quiz-container"></div>
+    <div id="quiz-feedback" class="quiz-feedback"></div>
+    <div id="quiz-score" class="quiz-score"></div>
+    <button id="quiz-reset-btn" class="play-btn" style="display:none;">🔄 إعادة الاختبار</button>
+</div>
+
+<button id="stop-btn" class="floating-stop-btn" title="إيقاف النطق">⏹️</button>
+
+<script>
+    const mainVocab = [
+        {en:"dress", ar:"فستان"}, {en:"closet", ar:"خزانة (دولاب) ملابس"}, {en:"playground", ar:"ملعب"},
+        {en:"competition", ar:"مسابقة"}, {en:"announce", ar:"يعلن"}, {en:"drawings", ar:"رسومات"},
+        {en:"sign", ar:"توقيع / يوقع"}, {en:"letter", ar:"خطاب"}, {en:"winner", ar:"فائز"},
+        {en:"medal", ar:"ميدالية"}, {en:"laugh", ar:"يضحك"}
+    ];
+
+    const extraVocab = [
+        {en:"quiet", ar:"هادئ"}, {en:"faded", ar:"باهت"}, {en:"popular", ar:"مشهور / محبوب"},
+        {en:"annoying", ar:"يزعج"}, {en:"absent", ar:"غائب"}, {en:"notice", ar:"يلاحظ"},
+        {en:"behavior", ar:"سلوك"}, {en:"expensive", ar:"غالي الثمن"}, {en:"bullying", ar:"تنمر"},
+        {en:"apologize", ar:"يعتذر"}, {en:"annual", ar:"سنوي"}, {en:"covered with", ar:"مغطى بـ"},
+        {en:"terrible", ar:"فظيع / بالأسى"}, {en:"unkindness", ar:"قسوة"}, {en:"experience", ar:"تجربة"}
+    ];
+
+    function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function fireConfetti(container) {
+        const colors = ['#e53935', '#fb8c00', '#fdd835', '#43a047', '#1e88e5', '#8e24aa'];
+        for (let i = 0; i < 28; i++) {
+            const conf = document.createElement('div');
+            conf.className = 'confetti-piece';
+            conf.style.left = (35 + Math.random() * 30) + '%';
+            conf.style.background = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDelay = (Math.random() * 0.25) + 's';
+            conf.style.setProperty('--x', (Math.random() * 220 - 110) + 'px');
+            container.appendChild(conf);
+            setTimeout(() => conf.remove(), 1400);
+        }
+    }
+
+    let quizPool = [], quizItems = [], quizIndex = 0, quizScore = 0;
+
+    function buildQuiz() {
+        quizPool = [...mainVocab, ...extraVocab];
+        quizItems = shuffle([...quizPool]).slice(0, Math.min(8, quizPool.length));
+        quizIndex = 0; quizScore = 0;
+        document.getElementById('quiz-score').innerText = '';
+        document.getElementById('quiz-reset-btn').style.display = 'none';
+        showQuizQuestion();
+    }
+
+    function showQuizQuestion() {
+        const quizBox = document.getElementById('quiz-container');
+        const progress = document.getElementById('quiz-progress');
+        const feedback = document.getElementById('quiz-feedback');
+        feedback.innerText = ''; feedback.className = 'quiz-feedback';
+        quizBox.innerHTML = '';
+
+        if (quizIndex >= quizItems.length) {
+            progress.innerText = '';
+            document.getElementById('quiz-score').innerText = `🏆 انتهى الاختبار! نتيجتك: ${quizScore} / ${quizItems.length}`;
+            document.getElementById('quiz-reset-btn').style.display = 'inline-block';
+            return;
+        }
+
+        progress.innerText = `Question ${quizIndex + 1} of ${quizItems.length}`;
+        const item = quizItems[quizIndex];
+        const distractors = shuffle(quizPool.filter(p => p.en !== item.en)).slice(0, 3).map(p => p.ar);
+        const options = shuffle([item.ar, ...distractors]);
+
+        const qDiv = document.createElement('div'); qDiv.className = 'quiz-question'; qDiv.style.position = 'relative';
+        qDiv.innerHTML = `<p class="q-text">What is the meaning of "<span style="color:var(--accent-color)">${item.en}</span>"?</p>`;
+        const optWrap = document.createElement('div'); optWrap.className = 'quiz-options';
+        let locked = false;
+
+        options.forEach(opt => {
+            const optBtn = document.createElement('div'); optBtn.className = 'quiz-option'; optBtn.innerText = opt;
+            optBtn.onclick = () => {
+                if (locked) return;
+                if (opt === item.ar) {
+                    locked = true;
+                    optBtn.classList.add('correct');
+                    feedback.innerText = '🎉 Bravo!'; feedback.className = 'quiz-feedback correct';
+                    fireConfetti(qDiv);
+                    speak('Bravo!');
+                    quizScore++;
+                    setTimeout(() => { quizIndex++; showQuizQuestion(); }, 1300);
+                } else {
+                    optBtn.classList.add('wrong');
+                    optBtn.style.pointerEvents = 'none';
+                    feedback.innerText = '❌ Try again!'; feedback.className = 'quiz-feedback wrong';
+                    speak('Try again!');
+                }
+            };
+            optWrap.appendChild(optBtn);
+        });
+        qDiv.appendChild(optWrap);
+        quizBox.appendChild(qDiv);
+    }
+
+    const synth = window.speechSynthesis;
+    // ===== Enhanced Voice Selection =====
+    let availableVoices = [];
+    let voiceLoadAttempt = 0;
+    const MAX_VOICE_ATTEMPTS = 6;
+    const RETRY_DELAYS = [0, 150, 400, 800, 1500, 2500];
+
+    function loadAvailableVoices() {
+        const vList = synth.getVoices();
+        if (vList.length) {
+            availableVoices = vList;
+            voiceLoadAttempt = 0;
+            populateVoiceDropdown();
+            return;
+        }
+        if (voiceLoadAttempt < MAX_VOICE_ATTEMPTS) {
+            const delay = RETRY_DELAYS[voiceLoadAttempt] || 2500;
+            voiceLoadAttempt++;
+            setTimeout(loadAvailableVoices, delay);
+        }
+    }
+
+    function voiceQualityScore(v) {
+        const name = (v.name || '').toLowerCase();
+        let score = 0;
+        if (name.includes('google')) score += 30;
+        if (name.includes('microsoft')) score += 25;
+        if (name.includes('samantha')) score += 20;
+        if (v.localService) score += 2;
+        return score;
+    }
+
+    function populateVoiceDropdown() {
+        const vs = document.getElementById('voice-select');
+        if (!vs || !availableVoices.length) return;
+        const normLang = (l) => String(l||'').replace('_','-').toLowerCase();
+        const enVoices = availableVoices.filter(v => {
+            const lang = normLang(v.lang);
+            return lang.startsWith('en-us') || lang.startsWith('en-gb');
+        });
+        if (!enVoices.length) return; // keep static options if no voices found
+        enVoices.sort((a,b) => voiceQualityScore(b) - voiceQualityScore(a));
+        const savedLang = localStorage.getItem('lesson_voice') || 'en-US';
+        const savedVoiceURI = localStorage.getItem('lesson_voiceURI') || '';
+        vs.innerHTML = '';
+        enVoices.forEach(v => {
+            const lang = String(v.lang||'').replace('_','-');
+            const isUS = lang.toLowerCase().startsWith('en-us');
+            const flag = isUS ? '\u{1F1FA}\u{1F1F8} American' : '\u{1F1EC}\u{1F1E7} British';
+            const opt = document.createElement('option');
+            opt.value = v.voiceURI;
+            opt.dataset.lang = lang;
+            opt.textContent = flag + ' \u2014 ' + v.name;
+            vs.appendChild(opt);
+        });
+        // Restore saved selection
+        const savedOpt = [...vs.options].find(o => o.value === savedVoiceURI) ||
+                         [...vs.options].find(o => o.dataset.lang.toLowerCase().startsWith(savedLang.toLowerCase()));
+        if (savedOpt) vs.value = savedOpt.value;
+    }
+
+    function getBestVoice() {
+        const vs = document.getElementById('voice-select');
+        if (!vs) return null;
+        // If dropdown has voiceURI values (populated dynamically)
+        const selectedURI = vs.value;
+        const found = availableVoices.find(v => v.voiceURI === selectedURI);
+        if (found) return found;
+        // Fallback: match by lang code
+        const targetLang = vs.options[vs.selectedIndex]?.dataset?.lang || vs.value || 'en-US';
+        const normTarget = targetLang.toLowerCase().replace('_','-');
+        const matches = availableVoices.filter(v => {
+            const vl = String(v.lang||'').replace('_','-').toLowerCase();
+            return vl === normTarget || vl.startsWith(normTarget + '-') || vl.startsWith(normTarget.split('-')[0] + '-' + normTarget.split('-')[1]);
+        });
+        if (matches.length) {
+            matches.sort((a,b) => voiceQualityScore(b) - voiceQualityScore(a));
+            return matches[0];
+        }
+        return null;
+    }
+
+    function getSelectedLang() {
+        const vs = document.getElementById('voice-select');
+        if (!vs) return 'en-US';
+        const opt = vs.options[vs.selectedIndex];
+        return (opt && opt.dataset && opt.dataset.lang) || vs.value || 'en-US';
+    }
+
+    // Load voices
+    loadAvailableVoices();
+    if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = loadAvailableVoices;
+    // ===== End Enhanced Voice Selection =====
+
+
+    function speak(text, el) {
+        synth.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = getSelectedLang();
+        { const _v = getBestVoice(); if (_v) utter.voice = _v; }
+        utter.rate = document.getElementById('speed-slider').value;
+        if(el) { el.classList.add('speaking-highlight'); utter.onend = () => el.classList.remove('speaking-highlight'); }
+        synth.speak(utter);
+    }
+
+    window.onload = () => {
+        buildQuiz();
+        document.getElementById('quiz-reset-btn').onclick = buildQuiz;
+
+        const speedSlider = document.getElementById('speed-slider');
+        const speedValue = document.getElementById('speed-value');
+        speedSlider.addEventListener('input', () => { speedValue.textContent = speedSlider.value + 'x'; });
+
+        const themes = {
+            purple: { accent:'#7b1fa2', highlight:'#e1bee7', speak:'#4a148c', play:'#8e24aa', border:'#ce93d8' },
+            blue:   { accent:'#1565c0', highlight:'#bbdefb', speak:'#0d47a1', play:'#1e88e5', border:'#64b5f6' },
+            orange: { accent:'#ef6c00', highlight:'#ffe0b2', speak:'#e65100', play:'#fb8c00', border:'#ffb74d' }
+        };
+        document.querySelectorAll('.theme-dot').forEach(dot => {
+            dot.onclick = () => {
+                const t = themes[dot.dataset.theme];
+                const root = document.documentElement.style;
+                root.setProperty('--accent-color', t.accent);
+                root.setProperty('--highlight-color', t.highlight);
+                root.setProperty('--speak-highlight', t.speak);
+                root.setProperty('--play-all-btn', t.play);
+                root.setProperty('--border-color', t.border);
+                document.querySelectorAll('.theme-dot').forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            };
+        });
+    };
+
+    const playList = (elements) => {
+        synth.cancel();
+        let i = 0;
+        function next() {
+            if(i < elements.length) {
+                const utter = new SpeechSynthesisUtterance(elements[i].innerText);
+                utter.lang = getSelectedLang();
+        { const _v = getBestVoice(); if (_v) utter.voice = _v; }
+                utter.rate = document.getElementById('speed-slider').value;
+                elements[i].classList.add('speaking-highlight');
+                elements[i].scrollIntoView({behavior:"smooth", block:"center"});
+                utter.onend = () => { elements[i].classList.remove('speaking-highlight'); i++; next(); };
+                synth.speak(utter);
+            }
+        }
+        next();
+    };
+
+    document.getElementById('play-all-vocab-btn').onclick = () => playList(document.querySelectorAll('.vocab-element'));
+    document.getElementById('play-all-story-btn').onclick = () => playList(document.querySelectorAll('.reading-sentence, .moral-text'));
+    document.getElementById('stop-btn').onclick = () => synth.cancel();
+</script>
+</body>
+</html>

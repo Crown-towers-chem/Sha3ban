@@ -1,0 +1,867 @@
+﻿<div style="position:sticky; top:0; background-color:#ffffff; padding:15px 0; text-align:center; font-family:Arial, sans-serif; box-shadow:0 4px 6px rgba(0,0,0,0.1); z-index:1000; display:flex; flex-direction:column; align-items:center;">
+  <h3 style="margin:2px 0; color:#333; text-align:center;">Mr. Shaaban Saber </h2>
+
+  <div style="margin-top:8px;">
+    <a href="tel:+201062196852" style="display:inline-block; background-color:#007BFF; color:#fff; padding:8px 16px; margin:3px; border-radius:5px; text-decoration:none; font-weight:bold;">
+      📞 01062196852
+    </a>
+    <a href="https://wa.me/+201062196852" target="_blank" style="display:inline-block; background-color:#25D366; color:#fff; padding:8px 16px; margin:3px; border-radius:5px; text-decoration:none; font-weight:bold;">
+      💬 تواصل عبر الواتس
+    </a>
+  </div>
+</div><!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Map - Billie Wind</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f4f8; --card-color: #ffffff; --accent-color: #2e7d32;
+            --text-color: #212121; --highlight-color: #c8e6c9; --speak-highlight: #1b5e20;
+            --play-all-btn: #4caf50; --secondary-text-color: #424242; --border-color: #81c784;
+            --speech-glow: #ffeb3b;
+            --word-highlight-bg: #fff59d; /* لون تظليل الكلمات المطلوبة */
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-color); margin: 0; padding: 20px; text-align: center; color: var(--text-color); transition: background-color 0.3s; }
+        .container { max-width: 1000px; margin: 0 auto 50px auto; background-color: var(--card-color); border-radius: 25px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); padding: 40px; border: 8px solid var(--accent-color); transition: border-color 0.3s; }
+        h1 { color: var(--accent-color); font-size: 2.5em; margin-bottom: 10px; }
+        h2 { color: var(--speak-highlight); border-bottom: 2px solid var(--border-color); display: inline-block; padding-bottom: 5px; }
+        h3 { background-color: var(--highlight-color); padding: 12px; border-radius: 10px; margin-top: 30px; text-align: right; direction: ltr; font-size: 1.6em; }
+
+        .speech-controls { background: #e8f5e9; padding: 15px; border-radius: 15px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; align-items: center; }
+        .control-group { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+        #speed-value { min-width: 32px; display: inline-block; font-weight: bold; color: var(--accent-color); }
+
+        .theme-switcher { display: flex; gap: 8px; align-items: center; }
+        .theme-dot { width: 26px; height: 26px; border-radius: 50%; cursor: pointer; border: 2px solid #fff; box-shadow: 0 0 0 1px #999; }
+        .theme-dot.active { box-shadow: 0 0 0 2px #333; }
+
+        .table-wrap { width: 100%; overflow-x: auto; }
+        table { width: 100%; min-width: 320px; border-collapse: separate; border-spacing: 0; margin-top: 15px; text-align: right; border-radius: 15px; overflow: hidden; }
+        th, td { border: 1px solid var(--border-color); padding: 12px; }
+        th { background-color: var(--accent-color); color: white; }
+        td:nth-child(odd) { background-color: #f1f8e9; }
+
+        .english-cell { text-align: left !important; direction: ltr !important; }
+        .arabic-cell { text-align: right !important; direction: rtl !important; }
+
+        .play-btn { background-color: var(--play-all-btn); color: white; border: none; padding: 12px 25px; border-radius: 12px; cursor: pointer; font-size: 1.1em; box-shadow: 0 5px #388e3c; margin: 10px 0; transition: 0.1s; }
+        .play-btn:active { transform: translateY(3px); box-shadow: 0 2px #388e3c; }
+
+        .vocab-element, .english-sentence, .story-text-element { 
+            cursor: pointer; transition: 0.2s; padding: 4px 8px; border-radius: 4px; display: inline-block; 
+            font-family: 'Roboto', sans-serif; font-weight: 700; color: #1a237e; 
+            border: 2px solid transparent;
+            direction: ltr !important; text-align: left;
+        }
+        .vocab-element:hover, .english-sentence:hover, .story-text-element:hover { background-color: var(--highlight-color); }
+        .story-paragraph { display: block; text-align: left; margin-bottom: 5px; font-size: 1.05em; line-height: 1.7; }
+        .speaking-highlight { 
+            background-color: var(--speak-highlight) !important; 
+            color: white !important; 
+            border-color: var(--speech-glow) !important;
+            box-shadow: 0 0 15px var(--speech-glow);
+            transform: scale(1.02);
+        }
+        .arabic-translation { 
+            display: block; text-align: right; direction: rtl !important;
+            color: var(--secondary-text-color); border-bottom: 1px dashed #ccc; 
+            margin-bottom: 15px; padding-bottom: 5px; font-size: 1.05em; font-weight: bold; 
+        }
+        
+        .map-element {
+            cursor: pointer; transition: 0.2s; padding: 2px 4px; border-radius: 4px; 
+        }
+        .map-element:hover { background-color: var(--highlight-color); }
+
+        /* تظليل الكلمات المطلوبة */
+        .highlighted-word {
+            background-color: var(--word-highlight-bg) !important;
+            padding: 0 5px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #c62828; /* لون النص ليكون مميزاً */
+            border-bottom: 2px solid #c62828;
+        }
+
+        .story-section { border: 2px solid var(--accent-color); border-radius: 15px; padding: 15px; margin-bottom: 20px; background: #f9f9f9; }
+        .story-subtitle { font-size: 1.3em; font-weight: bold; color: var(--accent-color); margin-bottom: 15px; text-align: left; }
+
+        .floating-stop-btn { position: fixed; bottom: 25px; right: 25px; z-index: 1000; background:#d32f2f; color:white; border:none; border-radius:50%; width:64px; height:64px; font-size:1.6em; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,0.35); display:flex; align-items:center; justify-content:center; transition: transform 0.15s; }
+        .floating-stop-btn:active { transform: scale(0.92); }
+
+        .quiz-question { background:#f9f9f9; border:2px solid var(--border-color); border-radius:12px; padding:15px; margin-bottom:15px; text-align:left; direction:ltr; }
+        .quiz-question p.q-text { font-size:1.15em; font-weight:bold; margin:0 0 10px 0; color:var(--text-color); }
+        .quiz-options { display:flex; flex-direction:column; gap:8px; }
+        .quiz-option { background:#fff; border:2px solid var(--border-color); border-radius:8px; padding:10px 15px; cursor:pointer; text-align:left; font-family:'Roboto',sans-serif; font-weight:700; transition:0.2s; direction:ltr; }
+        .quiz-option:hover { background: var(--highlight-color); }
+        .quiz-option.correct { background:#a5d6a7 !important; border-color:#2e7d32; color: #1b5e20; }
+        .quiz-option.wrong { background:#ef9a9a !important; border-color:#c62828; text-decoration: line-through; }
+        .quiz-option.show-correct { background:#a5d6a7 !important; border-color:#2e7d32; }
+        .quiz-score { font-size:1.3em; font-weight:bold; color:var(--accent-color); margin-top:15px; }
+        #quiz-progress { font-weight:bold; color:var(--secondary-text-color); margin-bottom:8px; }
+        .quiz-feedback { font-size:1.4em; font-weight:bold; margin-top:10px; min-height:1.4em; }
+        .quiz-feedback.correct { color:#2e7d32; }
+        .quiz-feedback.wrong { color:#c62828; }
+        .confetti-piece { position:absolute; top:10%; width:8px; height:8px; opacity:0.95; pointer-events:none; animation: confetti-fall 1.1s ease-out forwards; }
+        @keyframes confetti-fall { to { transform: translate(var(--x), 200px) rotate(720deg); opacity:0; } }
+
+        @media (max-width: 700px) {
+            body { padding: 10px; }
+            .container { padding: 20px 15px; border-radius: 18px; border-width: 5px; }
+            h1 { font-size: 1.7em; }
+            h3 { font-size: 1.2em; padding: 10px; }
+            .speech-controls { padding: 10px; gap: 10px; }
+            .control-group { font-size: 0.9em; }
+            th, td { padding: 8px 6px; font-size: 0.9em; }
+            .play-btn { padding: 10px 18px; font-size: 1em; width: 100%; }
+            .floating-stop-btn { width: 52px; height: 52px; font-size: 1.3em; bottom: 15px; right: 15px; }
+        }
+        @media (max-width: 420px) {
+            th, td { padding: 6px 4px; font-size: 0.8em; }
+            h1 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="main-title">📚 Loading...</h1>
+    <h2 id="sub-title"></h2>
+
+    <div class="speech-controls">
+        <div class="control-group"><label>🗣️ اللكنة:</label>
+            <select id="voice-select"><option value="en-US">American (US) 🇺🇸</option><option value="en-GB">British (UK) 🇬🇧</option></select>
+        </div>
+        <div class="control-group"><label>⚡ السرعة:</label>
+            <input type="range" id="speed-slider" min="0.5" max="1.2" value="0.9" step="0.1">
+            <span id="speed-value">0.9x</span>
+        </div>
+        <div class="theme-switcher">
+            <label>🎨</label>
+            <span class="theme-dot active" data-theme="green" style="background:#2e7d32;"></span>
+            <span class="theme-dot" data-theme="blue" style="background:#1565c0;"></span>
+            <span class="theme-dot" data-theme="orange" style="background:#ef6c00;"></span>
+        </div>
+    </div>
+
+    <button id="play-all-vocab-btn" class="play-btn">▶️ نطق جميع الكلمات والتعريفات</button>
+
+    <h3 id="storymap-title">🗺️ I. Story Map (خريطة القصة)</h3>
+    <div id="storymap-container"></div>
+
+    <h3 id="dict-title">📸 II. Picture Dictionary (القاموس المصوّر)</h3>
+    <div class="table-wrap"><table id="picture-dict"><tbody></tbody></table></div>
+
+    <h3 id="definitions-title">📖 III. Definitions (تعريفات)</h3>
+    <div class="table-wrap">
+        <table id="definitions">
+            <thead><tr><th>Word</th><th>Definition (English)</th><th>الترجمة</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <h3 id="story-title">📖 IV. Story Time (قصة Billie Wind)</h3>
+    <button id="play-all-story-btn" class="play-btn">▶️ نطق القصة كاملاً</button>
+    <div id="story-container" style="text-align:left; border: 2px solid var(--accent-color); padding: 20px; border-radius: 15px; margin-top:10px;"></div>
+
+    <h3 id="quiz-title">📝 V. Quick Quiz (اختبار سريع)</h3>
+    <div id="quiz-progress"></div>
+    <div id="quiz-container"></div>
+    <div id="quiz-feedback" class="quiz-feedback"></div>
+    <div id="quiz-score" class="quiz-score"></div>
+    <button id="quiz-reset-btn" class="play-btn" style="display:none;">🔄 إعادة الاختبار</button>
+</div>
+
+<button id="stop-btn" class="floating-stop-btn" title="إيقاف النطق">⏹️</button>
+
+<script>
+    // ============================================================
+    // 🟢 Lesson Data: Story Map - Billie Wind
+    // ============================================================
+    const lessonData = {
+        meta: {
+            mainTitle: "🗺️ Story Map - Billie Wind",
+            subTitle: "The Beginning, Middle & End",
+            storymapTitle: "🗺️ I. Story Map (خريطة القصة)",
+            dictTitle: "📸 II. Picture Dictionary (القاموس المصوّر)",
+            definitionsTitle: "📖 III. Definitions (تعريفات)",
+            storyTitle: "📖 IV. Story Time (قصة Billie Wind)",
+            quizTitle: "📝 V. Quick Quiz (اختبار سريع)",
+            playAllVocab: "▶️ نطق جميع الكلمات والتعريفات",
+            playAllStory: "▶️ نطق القصة كاملاً"
+        },
+
+        // ===== Story Map from Image 1 =====
+        storyMap: {
+            characters: [
+                {en: "Billie Wind", ar: "بيلي ويند"},
+                {en: "Billie's family", ar: "عائلة بيلي"},
+                {en: "The elders", ar: "كبار السن"}
+            ],
+            setting: {
+                places: [{en: "In Florida", ar: "في ولاية فلوريدا"}, {en: "The Everglades National Park", ar: "منتزه إيفرجليدز الوطني"}],
+                time: [{en: "At night", ar: "في الليل"}, {en: "After many days in the wild", ar: "بعد أيام عديدة في البرية"}]
+            },
+            plot: {
+                beginning: [
+                    "Billie Wind loved science and dreamed of becoming a scientist.",
+                    "Billie's family believed that the Earth could talk but Billie Wind didn't believe this.",
+                    "The elders told Billie Wind that she should go into the Everglades National Park alone and listen to the Earth."
+                ],
+                middle: [
+                    "Billie went into the Everglades alone to learn from nature.",
+                    "Billie struggled to survive in the Everglades.",
+                    "Billie wished she was back home, safe and warm.",
+                    "Billie watched the animals and learned how they survive."
+                ],
+                end: [
+                    "Billie understood that nature did talk, not with words, but through the movement of animals, and the changes in the land.",
+                    "Billie finally understood people should take care of nature to keep the balance."
+                ]
+            }
+        },
+
+        // ===== Picture Dictionary from Image 2 =====
+        pictureDictionary: [
+            {en: "canoe", ar: "قارب صغير"},
+            {en: "The Earth", ar: "كوكب الأرض"},
+            {en: "Everglades", ar: "منتزه إيفرجليدز"},
+            {en: "alligator", ar: "تمساح"},
+            {en: "owl", ar: "بومة"},
+            {en: "National Park", ar: "منتزه وطني"},
+            {en: "shell", ar: "صدفة"},
+            {en: "scientist", ar: "عالم"},
+            {en: "swamp", ar: "مستنقع"},
+            {en: "splash", ar: "رشاش / برش الماء"}
+        ],
+
+        // ===== Definitions from Image 2 =====
+        definitions: [
+            {word: "native", def: "the first person who lived in a place", ar: "السكان الأصليون"},
+            {word: "tribe", def: "a group of people who live together and share the same language, culture, and history", ar: "قبيلة"},
+            {word: "swamp", def: "wet, muddy area of land that has a lot of water, trees, and plants", ar: "مستنقع"},
+            {word: "shelter", def: "a safe place that protects someone from bad weather or danger", ar: "مأوى"},
+            {word: "survive", def: "to stay alive, especially in dangerous situations", ar: "ينجو / يبقى على قيد الحياة"},
+            {word: "wisdom", def: "using what you know to make good choices", ar: "الحكمة"},
+            {word: "disappointed", def: "feeling sad because something didn't happen as expected", ar: "محبط / خائب الأمل"},
+            {word: "hoot", def: "the sound an owl makes", ar: "صوت البومة"},
+            {word: "elders", def: "older people who are wise and respected", ar: "كبار السن"},
+            {word: "attack", def: "to try to hurt someone", ar: "يهاجم"},
+            {word: "pack", def: "put things together to carry or take with you", ar: "يحزم الأمتعة"},
+            {word: "struggle", def: "to have a hard time doing something", ar: "يكافح"},
+            {word: "the wild", def: "a place in nature where animals and plants live freely", ar: "البرية"}
+        ],
+
+        // ===== Story Parts from Image 3, 4, 5 =====
+        // تم تقسيم النصوص إلى جمل بسيطة (سطر بسطر) لسهولة القراءة والنطق
+        storyParts: [
+            {
+                part: "1",
+                title: "The Beginning",
+                subtitle: "Billie dreamed of becoming a scientist",
+                type: "beginning",
+                sentences: [
+                    {en: "Billie Wind was a young <span class='highlighted-word'>Native</span>[1] American girl who lived in Florida.", ar: "كانت بيلي ويند فتاة أمريكية من السكان الأصليين، تعيش في ولاية فلوريدا."},
+                    {en: "She loved <span class='highlighted-word'>science</span>[2] and dreamed of becoming a <span class='highlighted-word'>scientist</span>[3] when she grew up.", ar: "كانت تحب العلوم وتحلم بأن تصبح عالمة عندما تكبر."},
+                    {en: "But her family believed that the Earth could \"talk\" and share <span class='highlighted-word'>wisdom</span>[4] with those who listened to it.", ar: "لكن عائلتها كانت تؤمن بأن الأرض تستطيع أن تتحدث وتشارك الحكمة مع الذين يستمعون إليها."},
+                    {en: "They said the <span class='highlighted-word'>wind</span>[5], the water, and the animals all had something to teach.", ar: "وقالوا إن الرياح والمياه والحيوانات جميعاً لديها ما يمكن أن تعلمه."},
+                    {en: "Billie did not believe this.", ar: "لم تكن بيلي تصدق ذلك."},
+                    {en: "She <span class='highlighted-word'>thought</span>[6] these were just old stories with no <span class='highlighted-word'>real</span>[7] meaning.", ar: "واعتقدت أن هذه مجرد قصص قديمة لا معنى لها."}
+                ],
+                sentences2: [
+                    {en: "One day, Billie Wind told the <span class='highlighted-word'>elders</span>[1] of her <span class='highlighted-word'>tribe</span>[2] that she did not believe that the Earth could talk.", ar: "في أحد الأيام، أخبرت بيلي ويند كبار السن في قبيلتها بأنها لا تعتقد أن الأرض تستطيع أن تتحدث."},
+                    {en: "The elders were <span class='highlighted-word'>disappointed</span>[3].", ar: "شعر كبار السن بالإحباط."},
+                    {en: "They told Billie that if she did not believe what they said, then she should go into the Everglades National Park <span class='highlighted-word'>alone</span>[4] and listen to the Earth.", ar: "وقالوا لبيلي إنها إذا لم تصدق ما يقولونه، فعليها أن تذهب إلى منتزه إيفرجليدز وطني بمفردها وتستمع إلى الأرض."},
+                    {en: "Only then would she <span class='highlighted-word'>understand</span>[5].", ar: "عندها فقط ستفهم."},
+                    {en: "Billie did not want to go, but she had no <span class='highlighted-word'>choice</span>[6].", ar: "لم ترغب بيلي في الذهاب، ولكن لم يكن لديها أي خيار."},
+                    {en: "She <span class='highlighted-word'>packed</span>[7] her <span class='highlighted-word'>canoe</span>[8] and went into the Everglades, not sure what she might find.", ar: "فحزمت قاربها الصغير وذهبت إلى إيفرجليدز، غير متأكدة مما قد تجده هناك."}
+                ]
+            },
+            {
+                part: "2",
+                title: "The Middle",
+                subtitle: "How the animals taught Billie to survive",
+                type: "middle",
+                sentences: [
+                    {en: "At first, Billie <span class='highlighted-word'>struggled</span>[1] to survive in the Everglades.", ar: "في البداية، كافحت بيلي من أجل البقاء في إيفرجليدز."},
+                    {en: "She had no <span class='highlighted-word'>shelter</span>[2], no food, and no one to help her.", ar: "لم يكن لديها مأوى ولا طعام ولا أحد يساعدها."},
+                    {en: "The <span class='highlighted-word'>swamp</span>[3] was full of <span class='highlighted-word'>strange</span>[4] sounds, and she felt afraid.", ar: "كان المستنقع مليئاً بالأصوات الغريبة، وشعرت بالخوف."},
+                    {en: "At night, she heard <span class='highlighted-word'>alligators</span>[5] splashing in the water and <span class='highlighted-word'>owls</span>[6] hooting in the trees.", ar: "في الليل، كانت تسمع التماسيح وهي تتناثر في الماء والبوم وهي تصفر في الأشجار."},
+                    {en: "She wished she was back home, safe and warm.", ar: "تمنت أن تكون في المنزل دافئة وآمنة."},
+                    {en: "But slowly, she started to pay <span class='highlighted-word'>attention</span>[7] to the world around her.", ar: "لكن ببطء، بدأت تلتفت إلى العالم من حولها."}
+                ],
+                sentences2: [
+                    {en: "She watched the animals closely and saw how they survived.", ar: "راقبت بيلي الحيوانات عن كثب ورأت كيف تنجو."},
+                    {en: "The <span class='highlighted-word'>alligators</span>[1] waited patiently for their food instead of wasting <span class='highlighted-word'>energy</span>[2].", ar: "كانت التماسيح تنتظر بصبر طعامها بدلاً من إهدار طاقتها."},
+                    {en: "The turtles hid in their <span class='highlighted-word'>shells</span>[3] when <span class='highlighted-word'>danger</span>[4] was near.", ar: "كانت السلاحف تختبئ في أصدافها عندما يكون الخطر قريباً."},
+                    {en: "The birds warned each other when an animal came to <span class='highlighted-word'>attack</span>[5].", ar: "كانت الطيور تحذر بعضها البعض عندما يأتي حيوان للهجوم."},
+                    {en: "Billie realized that nature had its own way of teaching.", ar: "أدركت بيلي أن الطبيعة لديها طريقتها الخاصة في التعليم."},
+                    {en: "She learned how to catch fish, make a <span class='highlighted-word'>fire</span>[6], and find shelter, just like the animals did.", ar: "تعلمت كيف تصطاد السمك، وتشعل النار، وتجد المأوى، تماماً كما تفعل الحيوانات."}
+                ]
+            },
+            {
+                part: "3",
+                title: "The End",
+                subtitle: "Billie learned how to listen to the Earth.",
+                type: "end",
+                sentences: [
+                    {en: "After many days in the wild, Billie Wind was no longer <span class='highlighted-word'>afraid</span>[1].", ar: "بعد أيام عديدة في البرية، لم تعد بيلي ويند خائفة."},
+                    {en: "She learned how to survive, but more importantly, she learned how to listen.", ar: "لقد تعلمت كيف تنجو، ولكن الأهم من ذلك أنها تعلمت كيف تستمع."},
+                    {en: "The Earth did talk, not with words, but through the <span class='highlighted-word'>sounds</span>[2] of the wind, the <span class='highlighted-word'>movements</span>[3] of animals, and the changes in the land.", ar: "كانت الأرض تتحدث، ليس بالكلمات، بل من خلال أصوات الرياح وحركات الحيوانات والتغيرات في الأرض."},
+                    {en: "Everything in nature was <span class='highlighted-word'>connected</span>[4], and if people did not take care of it, the <span class='highlighted-word'>balance</span>[5] would be broken.", ar: "كل شيء في الطبيعة كان مترابطاً، وإذا لم يهتم الناس بها، فإن التوازن سيختل."}
+                ]
+            }
+        ]
+    };
+
+    // ============================================================
+    // ⚙️ 2. محرك القالب (مع إصلاح مشكلة الاختبار)
+    // ============================================================
+    const synth = window.speechSynthesis;
+    // ===== Enhanced Voice Selection =====
+    let availableVoices = [];
+    let voiceLoadAttempt = 0;
+    const MAX_VOICE_ATTEMPTS = 6;
+    const RETRY_DELAYS = [0, 150, 400, 800, 1500, 2500];
+
+    function loadAvailableVoices() {
+        const vList = synth.getVoices();
+        if (vList.length) {
+            availableVoices = vList;
+            voiceLoadAttempt = 0;
+            populateVoiceDropdown();
+            return;
+        }
+        if (voiceLoadAttempt < MAX_VOICE_ATTEMPTS) {
+            const delay = RETRY_DELAYS[voiceLoadAttempt] || 2500;
+            voiceLoadAttempt++;
+            setTimeout(loadAvailableVoices, delay);
+        }
+    }
+
+    function voiceQualityScore(v) {
+        const name = (v.name || '').toLowerCase();
+        let score = 0;
+        if (name.includes('google')) score += 30;
+        if (name.includes('microsoft')) score += 25;
+        if (name.includes('samantha')) score += 20;
+        if (v.localService) score += 2;
+        return score;
+    }
+
+    function populateVoiceDropdown() {
+        const vs = document.getElementById('voice-select');
+        if (!vs || !availableVoices.length) return;
+        const normLang = (l) => String(l||'').replace('_','-').toLowerCase();
+        const enVoices = availableVoices.filter(v => {
+            const lang = normLang(v.lang);
+            return lang.startsWith('en-us') || lang.startsWith('en-gb');
+        });
+        if (!enVoices.length) return; // keep static options if no voices found
+        enVoices.sort((a,b) => voiceQualityScore(b) - voiceQualityScore(a));
+        const savedLang = localStorage.getItem('lesson_voice') || 'en-US';
+        const savedVoiceURI = localStorage.getItem('lesson_voiceURI') || '';
+        vs.innerHTML = '';
+        enVoices.forEach(v => {
+            const lang = String(v.lang||'').replace('_','-');
+            const isUS = lang.toLowerCase().startsWith('en-us');
+            const flag = isUS ? '🇺🇸 American' : '🇬🇧 British';
+            const opt = document.createElement('option');
+            opt.value = v.voiceURI;
+            opt.dataset.lang = lang;
+            opt.textContent = flag + ' — ' + v.name;
+            vs.appendChild(opt);
+        });
+        // Restore saved selection
+        const savedOpt = [...vs.options].find(o => o.value === savedVoiceURI) ||
+                         [...vs.options].find(o => o.dataset.lang.toLowerCase().startsWith(savedLang.toLowerCase()));
+        if (savedOpt) vs.value = savedOpt.value;
+    }
+
+    function getBestVoice() {
+        const vs = document.getElementById('voice-select');
+        if (!vs) return null;
+        // If dropdown has voiceURI values (populated dynamically)
+        const selectedURI = vs.value;
+        const found = availableVoices.find(v => v.voiceURI === selectedURI);
+        if (found) return found;
+        // Fallback: match by lang code
+        const targetLang = vs.options[vs.selectedIndex]?.dataset?.lang || vs.value || 'en-US';
+        const normTarget = targetLang.toLowerCase().replace('_','-');
+        const matches = availableVoices.filter(v => {
+            const vl = String(v.lang||'').replace('_','-').toLowerCase();
+            return vl === normTarget || vl.startsWith(normTarget + '-') || vl.startsWith(normTarget.split('-')[0] + '-' + normTarget.split('-')[1]);
+        });
+        if (matches.length) {
+            matches.sort((a,b) => voiceQualityScore(b) - voiceQualityScore(a));
+            return matches[0];
+        }
+        return null;
+    }
+
+    function getSelectedLang() {
+        const vs = document.getElementById('voice-select');
+        if (!vs) return 'en-US';
+        const opt = vs.options[vs.selectedIndex];
+        return (opt && opt.dataset && opt.dataset.lang) || vs.value || 'en-US';
+    }
+
+    // Load voices
+    loadAvailableVoices();
+    if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = loadAvailableVoices;
+    // ===== End Enhanced Voice Selection =====
+
+    let speechQueue = [];
+    let isPlaying = false;
+    let currentSpeakingElement = null;
+
+    function loadPrefs() {
+        try {
+            const voice = localStorage.getItem('lesson_voice') || 'en-US';
+            const speed = localStorage.getItem('lesson_speed') || '0.9';
+            const theme = localStorage.getItem('lesson_theme') || 'green';
+            document.getElementById('voice-select').value = voice;
+            document.getElementById('speed-slider').value = speed;
+            document.getElementById('speed-value').innerText = speed + 'x';
+            applyTheme(theme);
+            document.querySelectorAll('.theme-dot').forEach(d => {
+                d.classList.toggle('active', d.dataset.theme === theme);
+            });
+        } catch(e) {}
+    }
+    function savePrefs() {
+        try {
+            localStorage.setItem('lesson_voice', getSelectedLang());
+            localStorage.setItem('lesson_voiceURI', document.getElementById('voice-select').value);
+            localStorage.setItem('lesson_speed', document.getElementById('speed-slider').value);
+            localStorage.setItem('lesson_theme', document.querySelector('.theme-dot.active')?.dataset?.theme || 'green');
+        } catch(e) {}
+    }
+
+    const themes = {
+        green:  { accent:'#2e7d32', highlight:'#c8e6c9', speak:'#1b5e20', play:'#4caf50', border:'#81c784' },
+        blue:   { accent:'#1565c0', highlight:'#bbdefb', speak:'#0d47a1', play:'#1e88e5', border:'#64b5f6' },
+        orange: { accent:'#ef6c00', highlight:'#ffe0b2', speak:'#e65100', play:'#fb8c00', border:'#ffb74d' }
+    };
+    function applyTheme(t) {
+        const theme = themes[t];
+        if(!theme) return;
+        const root = document.documentElement.style;
+        root.setProperty('--accent-color', theme.accent);
+        root.setProperty('--highlight-color', theme.highlight);
+        root.setProperty('--speak-highlight', theme.speak);
+        root.setProperty('--play-all-btn', theme.play);
+        root.setProperty('--border-color', theme.border);
+    }
+
+    function cancelSpeech() {
+        synth.cancel();
+        isPlaying = false;
+        speechQueue = [];
+        if (currentSpeakingElement) {
+            currentSpeakingElement.classList.remove('speaking-highlight');
+            currentSpeakingElement = null;
+        }
+    }
+
+    function speakText(text, element) {
+        if (!text) return;
+        cancelSpeech();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = getSelectedLang();
+        { const _v = getBestVoice(); if (_v) utter.voice = _v; }
+        utter.rate = parseFloat(document.getElementById('speed-slider').value);
+        
+        if (element) {
+            element.classList.add('speaking-highlight');
+            currentSpeakingElement = element;
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            utter.onend = () => {
+                if (currentSpeakingElement) {
+                    currentSpeakingElement.classList.remove('speaking-highlight');
+                    currentSpeakingElement = null;
+                }
+                isPlaying = false;
+            };
+            utter.onerror = () => {
+                if (currentSpeakingElement) {
+                    currentSpeakingElement.classList.remove('speaking-highlight');
+                    currentSpeakingElement = null;
+                }
+                isPlaying = false;
+            };
+        }
+        synth.speak(utter);
+        isPlaying = true;
+    }
+
+    function playQueue(elements) {
+        cancelSpeech();
+        if (!elements || elements.length === 0) return;
+        let index = 0;
+        speechQueue = [...elements];
+        isPlaying = true;
+
+        function next() {
+            if (!isPlaying || index >= speechQueue.length) {
+                isPlaying = false;
+                return;
+            }
+            const el = speechQueue[index];
+            const text = el.innerText.trim();
+            if (!text) { index++; next(); return; }
+
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = getSelectedLang();
+        { const _v = getBestVoice(); if (_v) utter.voice = _v; }
+            utter.rate = parseFloat(document.getElementById('speed-slider').value);
+            
+            el.classList.add('speaking-highlight');
+            currentSpeakingElement = el;
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            utter.onend = () => {
+                if (currentSpeakingElement) {
+                    currentSpeakingElement.classList.remove('speaking-highlight');
+                    currentSpeakingElement = null;
+                }
+                index++;
+                if (isPlaying) next();
+                else isPlaying = false;
+            };
+            utter.onerror = () => {
+                if (currentSpeakingElement) {
+                    currentSpeakingElement.classList.remove('speaking-highlight');
+                    currentSpeakingElement = null;
+                }
+                index++;
+                if (isPlaying) next();
+                else isPlaying = false;
+            };
+            synth.speak(utter);
+        }
+        next();
+    }
+
+    function buildTableData(data, tbodyId) {
+        const tbody = document.querySelector(`#${tbodyId} tbody`);
+        if (!tbody) return [];
+        tbody.innerHTML = '';
+        const elements = [];
+        for (let i = 0; i < data.length; i += 2) {
+            const tr = document.createElement('tr');
+            [i, i+1].forEach(idx => {
+                if (data[idx]) {
+                    const tdEn = document.createElement('td');
+                    tdEn.className = 'english-cell';
+                    const span = document.createElement('span');
+                    span.className = 'vocab-element';
+                    span.innerText = data[idx].en;
+                    span.onclick = () => speakText(data[idx].en, span);
+                    tdEn.appendChild(span);
+                    
+                    const tdAr = document.createElement('td');
+                    tdAr.className = 'arabic-cell';
+                    tdAr.innerText = data[idx].ar;
+                    tr.append(tdEn, tdAr);
+                    elements.push(span);
+                }
+            });
+            tbody.appendChild(tr);
+        }
+        return elements;
+    }
+
+    function buildDefinitions(data, tbodyId) {
+        const tbody = document.querySelector(`#${tbodyId} tbody`);
+        if (!tbody) return [];
+        tbody.innerHTML = '';
+        const elements = [];
+
+        data.forEach(item => {
+            const tr = document.createElement('tr');
+
+            const tdWord = document.createElement('td');
+            tdWord.className = 'english-cell';
+            const spanWord = document.createElement('span');
+            spanWord.className = 'vocab-element';
+            spanWord.innerText = item.word;
+            spanWord.onclick = () => speakText(item.word, spanWord);
+            tdWord.appendChild(spanWord);
+            elements.push(spanWord);
+
+            const tdDef = document.createElement('td');
+            tdDef.className = 'english-cell';
+            const spanDef = document.createElement('span');
+            spanDef.className = 'vocab-element';
+            spanDef.innerText = item.def;
+            spanDef.onclick = () => speakText(item.def, spanDef);
+            tdDef.appendChild(spanDef);
+            elements.push(spanDef);
+
+            const tdAr = document.createElement('td');
+            tdAr.className = 'arabic-cell';
+            tdAr.innerText = item.ar;
+
+            tr.append(tdWord, tdDef, tdAr);
+            tbody.appendChild(tr);
+        });
+
+        return elements;
+    }
+
+    function initLesson() {
+        const meta = lessonData.meta;
+        document.getElementById('main-title').innerText = meta.mainTitle || '📚 Lesson';
+        document.getElementById('sub-title').innerText = meta.subTitle || '';
+        document.getElementById('storymap-title').innerText = meta.storymapTitle;
+        document.getElementById('dict-title').innerText = meta.dictTitle;
+        document.getElementById('definitions-title').innerText = meta.definitionsTitle;
+        document.getElementById('story-title').innerText = meta.storyTitle;
+        document.getElementById('quiz-title').innerText = meta.quizTitle;
+        document.getElementById('play-all-vocab-btn').innerText = meta.playAllVocab;
+        document.getElementById('play-all-story-btn').innerText = meta.playAllStory;
+
+        let allSpeakElements = [];
+
+        // --- 1. Story Map Section ---
+        const storyMap = lessonData.storyMap;
+        
+        // Helper function to create speakable text for Story Map
+        const mapSpeak = (text, el) => {
+            el.classList.add('map-element');
+            el.onclick = () => speakText(text, el);
+        };
+
+        let smHTML = `
+            <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:15px;">
+                <div style="flex:1; min-width:250px; border:1px solid var(--border-color); border-radius:10px; padding:15px; background:#f9f9f9;">
+                    <h4 style="color:var(--accent-color); margin-top:0; text-align:center;">The characters (الشخصيات)</h4>
+                    ${storyMap.characters.map(c => `<div style="display:flex; justify-content:space-between; border-bottom:1px dashed #ccc; padding:5px;"><span class="map-element" onclick="speakText('${c.en}', this)">${c.en}</span><span>${c.ar}</span></div>`).join('')}
+                </div>
+                <div style="flex:1; min-width:250px; border:1px solid var(--border-color); border-radius:10px; padding:15px; background:#f9f9f9;">
+                    <h4 style="color:var(--accent-color); margin-top:0; text-align:center;">The setting (المكان والزمان)</h4>
+                    <div style="margin-bottom:10px; border-bottom:1px dashed #ccc; padding:5px;">
+                        <div style="font-weight:bold; color:#2e7d32;">Places (الأماكن)</div>
+                        ${storyMap.setting.places.map(p => `<div style="display:flex; justify-content:space-between; padding:2px;"><span class="map-element" onclick="speakText('${p.en}', this)">${p.en}</span><span>${p.ar}</span></div>`).join('')}
+                    </div>
+                    <div style="padding:5px;">
+                        <div style="font-weight:bold; color:#2e7d32;">Time (الوقت)</div>
+                        ${storyMap.setting.time.map(t => `<div style="display:flex; justify-content:space-between; padding:2px;"><span class="map-element" onclick="speakText('${t.en}', this)">${t.en}</span><span>${t.ar}</span></div>`).join('')}
+                    </div>
+                </div>
+            </div>
+            <div style="border:1px solid var(--border-color); border-radius:10px; padding:15px; background:#f9f9f9; margin-top:20px;">
+                <h4 style="color:var(--accent-color); margin-top:0; text-align:center;">Story plot (مبكة القصة)</h4>
+                <div style="display:flex; flex-wrap:wrap; gap:15px;">
+                    <div style="flex:1; min-width:200px; background:var(--highlight-color); padding:10px; border-radius:8px;">
+                        <div style="font-weight:bold; color:var(--speak-highlight); text-align:center;">Beginning (البداية)</div>
+                        ${storyMap.plot.beginning.map(p => `<li class="map-element" style="text-align:left; margin-bottom:5px; direction:ltr; list-style:inside;" onclick="speakText('${p}', this)">${p}</li>`).join('')}
+                    </div>
+                    <div style="flex:1; min-width:200px; background:var(--highlight-color); padding:10px; border-radius:8px;">
+                        <div style="font-weight:bold; color:var(--speak-highlight); text-align:center;">Middle (المنتصف)</div>
+                        ${storyMap.plot.middle.map(p => `<li class="map-element" style="text-align:left; margin-bottom:5px; direction:ltr; list-style:inside;" onclick="speakText('${p}', this)">${p}</li>`).join('')}
+                    </div>
+                    <div style="flex:1; min-width:200px; background:var(--highlight-color); padding:10px; border-radius:8px;">
+                        <div style="font-weight:bold; color:var(--speak-highlight); text-align:center;">End (النهاية)</div>
+                        ${storyMap.plot.end.map(p => `<li class="map-element" style="text-align:left; margin-bottom:5px; direction:ltr; list-style:inside;" onclick="speakText('${p}', this)">${p}</li>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+        document.getElementById('storymap-container').innerHTML = smHTML;
+
+        // --- 2. Picture Dictionary ---
+        const dictEls = buildTableData(lessonData.pictureDictionary, 'picture-dict');
+        allSpeakElements = allSpeakElements.concat(dictEls);
+
+        // --- 3. Definitions ---
+        const defEls = buildDefinitions(lessonData.definitions, 'definitions');
+        allSpeakElements = allSpeakElements.concat(defEls);
+
+        // --- 4. Story Parts (Divided into sentences as requested) ---
+        const sBox = document.getElementById('story-container');
+        sBox.innerHTML = '';
+        const storySentences = [];
+        const storyParts = lessonData.storyParts;
+
+        storyParts.forEach((part, index) => {
+            const sectionDiv = document.createElement('div');
+            sectionDiv.className = 'story-section';
+            
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'story-subtitle';
+            titleDiv.innerText = `${part.part}. ${part.title}`;
+            sectionDiv.appendChild(titleDiv);
+
+            const subtitleDiv = document.createElement('div');
+            subtitleDiv.style.cssText = 'color:#1565c0; font-weight:bold; margin-bottom:15px; text-align:left;';
+            subtitleDiv.innerText = part.subtitle;
+            sectionDiv.appendChild(subtitleDiv);
+
+            // Helper to iterate over sentences
+            const processSentences = (sentencesArray) => {
+                if(!sentencesArray) return;
+                sentencesArray.forEach(sentence => {
+                    const line = document.createElement('div');
+                    
+                    const sentSpan = document.createElement('span');
+                    sentSpan.className = 'story-text-element';
+                    // Using innerHTML to render highlighted words within the sentence
+                    sentSpan.innerHTML = sentence.en; 
+                    sentSpan.onclick = () => speakText(sentSpan.innerText, sentSpan);
+                    
+                    const arSpan = document.createElement('span');
+                    arSpan.className = 'arabic-translation';
+                    arSpan.innerText = sentence.ar;
+                    
+                    line.appendChild(sentSpan);
+                    line.appendChild(arSpan);
+                    sectionDiv.appendChild(line);
+                    
+                    storySentences.push(sentSpan);
+                    allSpeakElements.push(sentSpan);
+                });
+            };
+
+            // Check for divided arrays (sentences & sentences2)
+            if(part.sentences) processSentences(part.sentences);
+            if(part.sentences2) processSentences(part.sentences2);
+
+            sBox.appendChild(sectionDiv);
+        });
+
+        // --- Play Buttons ---
+        document.getElementById('play-all-vocab-btn').onclick = () => {
+            const vocabEls = allSpeakElements.filter(el => !el.closest('#story-container'));
+            playQueue(vocabEls);
+        };
+        document.getElementById('play-all-story-btn').onclick = () => {
+            playQueue(storySentences);
+        };
+        document.getElementById('stop-btn').onclick = cancelSpeech;
+
+        buildQuiz();
+        document.getElementById('quiz-reset-btn').onclick = buildQuiz;
+
+        document.getElementById('voice-select').onchange = savePrefs;
+        document.getElementById('speed-slider').oninput = () => {
+            document.getElementById('speed-value').innerText = document.getElementById('speed-slider').value + 'x';
+            savePrefs();
+        };
+        document.querySelectorAll('.theme-dot').forEach(dot => {
+            dot.onclick = () => {
+                document.querySelectorAll('.theme-dot').forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+                applyTheme(dot.dataset.theme);
+                savePrefs();
+            };
+        });
+    }
+
+    // --- Quiz System (مع إصلاح مشكلة Undefined) ---
+    let quizPool = [], quizItems = [], quizIndex = 0, quizScore = 0;
+    function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+    function fireConfetti(container) {
+        const colors = ['#e53935', '#fb8c00', '#fdd835', '#43a047', '#1e88e5', '#8e24aa'];
+        for (let i = 0; i < 28; i++) {
+            const conf = document.createElement('div');
+            conf.className = 'confetti-piece';
+            conf.style.left = (35 + Math.random() * 30) + '%';
+            conf.style.background = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDelay = (Math.random() * 0.25) + 's';
+            conf.style.setProperty('--x', (Math.random() * 220 - 110) + 'px');
+            container.appendChild(conf);
+            setTimeout(() => conf.remove(), 1400);
+        }
+    }
+    function buildQuiz() {
+        // 🔥 تصحيح المشكلة: توحيد هيكل بيانات الاختبار
+        const dictItems = lessonData.pictureDictionary;
+        const defItems = lessonData.definitions.map(d => ({ en: d.word, ar: d.ar }));
+        const allVocab = [...dictItems, ...defItems]; // الآن كل عنصر يحتوي على `en` و `ar`
+        
+        quizPool = shuffle([...allVocab]);
+        quizItems = quizPool.slice(0, Math.min(8, quizPool.length));
+        quizIndex = 0; quizScore = 0;
+        document.getElementById('quiz-score').innerText = '';
+        document.getElementById('quiz-reset-btn').style.display = 'none';
+        showQuizQuestion();
+    }
+    function showQuizQuestion() {
+        const quizBox = document.getElementById('quiz-container');
+        const progress = document.getElementById('quiz-progress');
+        const feedback = document.getElementById('quiz-feedback');
+        const scoreDiv = document.getElementById('quiz-score');
+        feedback.innerText = ''; feedback.className = 'quiz-feedback';
+        quizBox.innerHTML = '';
+
+        if (quizIndex >= quizItems.length) {
+            progress.innerText = '';
+            scoreDiv.innerText = `🏆 انتهى الاختبار! نتيجتك: ${quizScore} / ${quizItems.length}`;
+            document.getElementById('quiz-reset-btn').style.display = 'inline-block';
+            return;
+        }
+
+        progress.innerText = `سؤال ${quizIndex + 1} من ${quizItems.length}`;
+        const item = quizItems[quizIndex];
+        const distractors = shuffle(quizPool.filter(p => p.en !== item.en)).slice(0, 3).map(p => p.ar);
+        const options = shuffle([item.ar, ...distractors]);
+
+        const qDiv = document.createElement('div'); qDiv.className = 'quiz-question'; qDiv.style.position = 'relative';
+        qDiv.innerHTML = `<p class="q-text">ما معنى كلمة "<span style="color:var(--accent-color)">${item.en}</span>"؟</p>`;
+        const optWrap = document.createElement('div'); optWrap.className = 'quiz-options';
+        let locked = false;
+
+        options.forEach(opt => {
+            const optBtn = document.createElement('div'); 
+            optBtn.className = 'quiz-option'; 
+            optBtn.innerText = opt;
+            optBtn.onclick = () => {
+                if (locked) return;
+                locked = true;
+                document.querySelectorAll('.quiz-option').forEach(b => b.style.pointerEvents = 'none');
+
+                if (opt === item.ar) {
+                    optBtn.classList.add('correct');
+                    feedback.innerText = '🎉 إجابة صحيحة!'; feedback.className = 'quiz-feedback correct';
+                    fireConfetti(qDiv);
+                    speakText('Correct!');
+                    quizScore++;
+                    setTimeout(() => { quizIndex++; showQuizQuestion(); }, 1200);
+                } else {
+                    optBtn.classList.add('wrong');
+                    document.querySelectorAll('.quiz-option').forEach(b => {
+                        if (b.innerText === item.ar) {
+                            b.classList.add('show-correct');
+                        }
+                    });
+                    feedback.innerText = `❌ خطأ! الإجابة الصحيحة: "${item.ar}"`; 
+                    feedback.className = 'quiz-feedback wrong';
+                    speakText('Wrong!');
+                    setTimeout(() => { quizIndex++; showQuizQuestion(); }, 2000);
+                }
+            };
+            optWrap.appendChild(optBtn);
+        });
+        qDiv.appendChild(optWrap);
+        quizBox.appendChild(qDiv);
+    }
+
+    window.onload = () => {
+        loadPrefs();
+        initLesson();
+    };
+</script>
+</body>
+</html>

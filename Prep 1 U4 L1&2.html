@@ -1,0 +1,725 @@
+﻿<div style="position:sticky; top:0; background-color:#ffffff; padding:15px 0; text-align:center; font-family:Arial, sans-serif; box-shadow:0 4px 6px rgba(0,0,0,0.1); z-index:1000; display:flex; flex-direction:column; align-items:center;">
+  <h3 style="margin:2px 0; color:#333; text-align:center;">Mr. Shaaban Saber </h2>
+
+  <div style="margin-top:8px;">
+    <a href="tel:+201062196852" style="display:inline-block; background-color:#007BFF; color:#fff; padding:8px 16px; margin:3px; border-radius:5px; text-decoration:none; font-weight:bold;">
+      📞 01062196852
+    </a>
+    <a href="https://wa.me/+201062196852" target="_blank" style="display:inline-block; background-color:#25D366; color:#fff; padding:8px 16px; margin:3px; border-radius:5px; text-decoration:none; font-weight:bold;">
+      💬 تواصل عبر الواتس
+    </a>
+  </div>
+</div><!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>Prep 1 Unit 4: Lessons 1 & 2 - Decisions and Consequences</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --A: #0f766e; --A2: #0d5c55; --blue4: #ccfbf1; --blue5: #f0fdfa;
+            --text: #1E293B; --text2: #64748B; --card: #fff; --border: #E2E8F0;
+            --bg: #F1F5F9; --radius: 14px; --stop: #EF4444; --pause: #94A3B8;
+            --highlight-bg: rgba(37,99,235,0.13);
+            --word-highlight: #fde047;
+            --fab-bg: #1e293b; --fab-text: #fff;
+        }
+        [data-theme="ocean"] {
+            --A: #1d4ed8; --A2: #1e3a8a; --blue4: #dbeafe; --blue5: #eff6ff;
+            --text: #1E293B; --text2: #64748B; --card: #fff; --border: #E2E8F0;
+            --bg: #F1F5F9; --stop: #EF4444; --highlight-bg: rgba(37,99,235,0.13);
+            --fab-bg: #1e3a8a; --fab-text: #fff;
+        }
+        [data-theme="garden"] {
+            --A: #15803d; --A2: #14532d; --blue4: #dcfce7; --blue5: #f0fdf4;
+            --text: #1E293B; --text2: #64748B; --card: #fff; --border: #E2E8F0;
+            --bg: #F1F5F9; --stop: #EF4444; --highlight-bg: rgba(21,128,61,0.13);
+            --fab-bg: #14532d; --fab-text: #fff;
+        }
+        [data-theme="sunset"] {
+            --A: #c2410c; --A2: #9a3412; --blue4: #ffedd5; --blue5: #fff7ed;
+            --text: #1E293B; --text2: #64748B; --card: #fff; --border: #E2E8F0;
+            --bg: #F1F5F9; --stop: #EF4444; --highlight-bg: rgba(194,65,12,0.13);
+            --fab-bg: #9a3412; --fab-text: #fff;
+        }
+        [data-theme="dark"] {
+            --A: #2dd4bf; --A2: #0d9488; --blue4: #134e4a; --blue5: #0f172a;
+            --text: #f8fafc; --text2: #94a3b8; --card: #1e293b; --border: #334155;
+            --bg: #0f172a; --stop: #f87171; --pause: #64748b; --highlight-bg: rgba(45,212,191,0.15);
+            --word-highlight: #facc15; --fab-bg: #facc15; --fab-text: #1e293b;
+        }
+        *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+        body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:100px;overflow-x:hidden;transition:background .3s,color .3s;}
+        body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(135deg,rgba(37,99,235,.03) 25%,transparent 25%),linear-gradient(225deg,rgba(37,99,235,.03) 25%,transparent 25%),linear-gradient(315deg,rgba(37,99,235,.03) 25%,transparent 25%),linear-gradient(45deg,rgba(37,99,235,.03) 25%,transparent 25%);background-size:30px 30px;z-index:-1;pointer-events:none;}
+        .hero{color:#fff;text-align:center;padding:28px 20px 22px;margin-bottom:24px;background:linear-gradient(135deg, var(--A), var(--A2));}
+        .hero .emoji-big{font-size:2.8rem;display:block;margin-bottom:8px;}
+        .hero h1{font-size:1.55rem;font-weight:900;}
+        .hero .sub{font-size:.9rem;opacity:.85;margin-top:5px;font-family:'Cairo',sans-serif;font-weight:600;}
+        .toolbar{max-width:780px;margin:0 auto 24px;padding:0 16px;text-align:center;}
+        .toolbar-inner{display:inline-flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:50px;padding:9px 20px;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+        .toolbar label{font-weight:800;color:var(--A);font-size:13px;}
+        input[type=range]{width:100px;accent-color:var(--A);}
+        .rate-badge{font-weight:900;font-size:13px;color:var(--A);min-width:34px;}
+        select{padding:5px 8px;border-radius:6px;border:1px solid var(--border);font-weight:600;background:var(--card);color:var(--text);}
+        .theme-switcher{display:flex;align-items:center;gap:8px;margin-left:auto;}
+        .theme-btn{-webkit-appearance:none;appearance:none;border:2px solid transparent;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;color:#fff;letter-spacing:.5px;transition:all .2s;}
+        .theme-btn.t-teal{background:linear-gradient(135deg,#0f766e,#2dd4bf);}
+        .theme-btn.t-ocean{background:linear-gradient(135deg,#1d4ed8,#0ea5e9);}
+        .theme-btn.t-garden{background:linear-gradient(135deg,#15803d,#4ade80);}
+        .theme-btn.t-sunset{background:linear-gradient(135deg,#c2410c,#f97316);}
+        .theme-btn.t-dark{background:linear-gradient(135deg,#1e293b,#475569);color:#e2e8f0;}
+        .theme-btn.active{border-color:#fff;box-shadow:0 0 0 2px currentColor;transform:scale(1.08);}
+        .container{max-width:780px;margin:auto;padding:0 16px;}
+        .section-block{background:var(--card);border-radius:var(--radius);margin-bottom:22px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);border:1px solid var(--border);}
+        .sec-title{color:#fff;font-size:.85rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:12px 18px;display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--A),var(--A2));}
+        .sec-title::before{content:"";display:inline-block;width:6px;height:6px;background:rgba(255,255,255,.5);border-radius:50%;flex-shrink:0;}
+        .sec-body{padding:16px;}
+        .sec-play-bar{display:flex;gap:7px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
+        .big-btn{-webkit-appearance:none;appearance:none;border:none;border-radius:9px;padding:10px 17px;font-size:13px;font-weight:800;cursor:pointer;color:#fff;display:inline-flex;align-items:center;gap:5px;transition:transform .12s;font-family:'Nunito',sans-serif;}
+        .big-btn:active{transform:scale(.95);}
+        .big-btn.pause-btn{background:var(--pause);}
+        .big-btn.stop-btn{background:var(--stop);}
+        .big-btn.play-all-btn{background:linear-gradient(135deg, var(--A), var(--A2)); margin-left: 12px;}
+        .info-box{background:#FAFAFA;border:1px solid var(--border);border-radius:11px;padding:13px;margin-bottom:14px;}
+        [data-theme="dark"] .info-box{background:#0f172a;}
+        .info-title{display:flex;align-items:center;gap:5px;font-weight:900;font-size:.78rem;margin-bottom:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--A2);}
+        .vocab{display:flex;flex-wrap:wrap;gap:7px;}
+        .pill{padding:8px 13px;border-radius:8px;background:var(--card);border:1px solid var(--blue4);text-align:center;cursor:pointer;flex:1 1 auto;min-width:78px;transition:all .15s;}
+        .pill:active{transform:scale(.96);}
+        .pill .en{font-weight:800;font-size:14px;display:block;color:var(--A);}
+        .pill .tr{font-size:11px;color:var(--text2);font-family:'Cairo',sans-serif;font-weight:600;}
+        .story-card{background:var(--blue5);border:1px solid var(--blue4);border-left:4px solid var(--A);border-radius:11px;padding:15px 17px;margin-bottom:13px;}
+        
+        .sentence {
+            display: block;
+            cursor: pointer;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            transition: background .2s;
+            line-height: 1.8;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+            background: rgba(255,255,255,0.4);
+        }
+        [data-theme="dark"] .sentence { background: rgba(255,255,255,0.05); }
+        
+        .sentence .word {
+            transition: background 0.15s;
+            border-radius: 3px;
+            padding: 0 2px;
+            pointer-events: none;
+        }
+        .sentence .word.highlight, .pill .word.highlight, .rule-item .word.highlight {
+            background: var(--word-highlight);
+            color: #000;
+        }
+        
+        .sentence.active-sent{
+            background: var(--highlight-bg);
+            outline:2px solid var(--A);
+            outline-offset:1px;
+        }
+
+        .pill.active-sent{background: var(--highlight-bg); outline:2px solid var(--A); outline-offset:1px;}
+        .rule-item.active-sent{background: var(--highlight-bg); outline:2px solid var(--A); outline-offset:1px;}
+        
+        .story-ar{font-family:'Cairo',sans-serif;color:var(--text2);font-size:14px;text-align:right;direction:rtl;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-weight:600;line-height:2;}
+        .rules-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:13px;}
+        .rule-item{display:flex;align-items:flex-start;gap:10px;background:var(--blue5);border:1px solid var(--blue4);border-radius:9px;padding:11px 13px;cursor:pointer;transition:all .2s;}
+        .rule-item .rule-text{flex:1;}
+        .rule-item .rule-text .en{font-size:15px;font-weight:700;color:var(--text);}
+        .rule-item .rule-text .ar{font-family:'Cairo',sans-serif;font-size:12px;color:var(--text2);text-align:right;direction:rtl;font-weight:600;margin-top:2px;}
+        footer{text-align:center;margin-top:14px;padding:16px;color:var(--text2);font-size:11px;}
+        footer strong{color:var(--A);}
+        .voice-note{font-size:11px;color:#b45309;margin-top:4px;display:block;}
+        .fab-pause{
+            position: fixed; bottom: 24px; right: 24px; z-index: 999;
+            width: 56px; height: 56px; border-radius: 50%;
+            background: var(--fab-bg); color: var(--fab-text);
+            border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            font-size: 24px; display: none; align-items: center; justify-content: center;
+            cursor: pointer; transition: transform 0.2s, opacity 0.2s;
+        }
+        .fab-pause:active{transform: scale(0.9);}
+        .fab-pause.show{display: flex;}
+    </style>
+</head>
+<body>
+
+<div class="hero"><span class="emoji-big">🤔</span><h1>Prep 1: Unit 4</h1><p class="sub">Lessons 1 & 2 - Think Before You Choose</p></div>
+
+<div class="toolbar"><div class="toolbar-inner">
+    <label for="rateRange">Speed</label><input id="rateRange" type="range" min="0.5" max="1.2" step="0.1" value="1"/>
+    <span class="rate-badge" id="rateBadge">1.0x</span>
+    <select id="voiceSelect" style="max-width:180px;"></select>
+    <span id="voiceNote" class="voice-note"></span>
+    <div class="theme-switcher">
+        <button class="theme-btn t-teal" onclick="setTheme('teal',this)">Teal</button>
+        <button class="theme-btn t-ocean" onclick="setTheme('ocean',this)">Ocean</button>
+        <button class="theme-btn t-garden" onclick="setTheme('garden',this)">Garden</button>
+        <button class="theme-btn t-sunset" onclick="setTheme('sunset',this)">Sunset</button>
+        <button class="theme-btn t-dark" onclick="setTheme('dark',this)">Dark</button>
+    </div>
+    <button class="big-btn play-all-btn" onclick="playAll()">🔊 Play All</button>
+</div></div>
+
+<main class="container">
+    <div id="sections-container"></div>
+</main>
+
+<button class="fab-pause" id="fabPause" onclick="toggleFabPause()" title="إيقاف / استئناف">⏯️</button>
+
+<script>
+
+  // ===================== دالة تنظيف النص للصوت (تم إصلاحها) =====================
+function cleanForSpeech(text) {
+    let result = text;
+    // 1. إزالة كل ما بداخل الأقواس بما فيها الأقواس نفسها (مثل (n), (v), (adj), (ed))
+    result = result.replace(/\([^)]*\)/g, ' ');
+    // 2. إزالة علامات الترقيم والرموز الخاصة
+    result = result.replace(/[\/\:\"\']/g, ' ');
+    // 3. إزالة الأسهم
+    result = result.replace(/[→]/g, ' ');
+    // 4. تنظيف المسافات الزائدة
+    result = result.replace(/\s+/g, ' ').trim();
+    return result;
+}
+  // ===================== بيانات المحتوى (Unit 4 - Lessons 1 & 2) =====================
+
+// 1. Key Vocabulary (L1 & L2)
+const keyVocabL1L2 = [
+    ["decision (n)", "قرار"],
+    ["goal (n)", "هدف"],
+    ["left out (adj)", "مستبعد / متروك"],
+    ["careless (adj)", "مهمل"],
+    ["negative (adj)", "سلبي"],
+    ["positive (adj)", "إيجابي"],
+    ["consequences (n)", "عواقب / نتائج"],
+    ["benefit (ed) (v,n)", "يفيد / فائدة"],
+    ["evaluate (d) (v)", "يقيّم"],
+    ["responsible (adj)", "مسؤول"]
+];
+
+// 2. Lesson 1 Vocabulary
+const l1Vocab = [
+    ["invite (d) (v)", "يدعو"],
+    ["sides (n)", "جوانب"],
+    ["options (n)", "خيارات"],
+    ["close friend (n)", "صديق مقرب"],
+    ["promise (d) (v, n)", "يعد / وعد"],
+    ["smart choice (n)", "خيار ذكي"],
+    ["behave (v)", "يتصرف"],
+    ["choice (n)", "اختيار"]
+];
+
+// 3. Lesson 2 Vocabulary
+const l2Vocab = [
+    ["avoid (ed) (v)", "يتجنب"],
+    ["carefully (adv)", "بحرص / بعناية"],
+    ["school trip (n)", "رحلة مدرسية"],
+    ["effect (n)", "تأثير"],
+    ["polite (adj)", "مهذب"],
+    ["coach (n)", "مدرب"],
+    ["skip (ped) (v)", "يتخطى / يترك"],
+    ["harmful (adj)", "ضار"],
+    ["injury (n)", "إصابة"]
+];
+
+// 4. Collocations
+const collocationsData = [
+    ["take / make a decision", "يتخذ قراراً"],
+    ["make mistakes", "يرتكب أخطاء"],
+    ["feel left out", "يشعر بأنه مستبعد"],
+    ["pass the test", "يجتاز الامتحان"],
+    ["waste time", "يهدر الوقت"],
+    ["reach goals", "يحقق الأهداف"]
+];
+
+// 5. Synonyms & Antonyms
+const synData = [
+    {word: "smart (adj)", syn: "intelligent"},
+    {word: "let (v)", syn: "allow"},
+    {word: "close (adj)", syn: "near"},
+    {word: "positive (adj)", syn: "good"},
+    {word: "careless (adj)", syn: "irresponsible"},
+    {word: "polite (adj)", syn: "gentle / well-mannered"}
+];
+
+const antData = [
+    {word: "smart (adj)", ant: "stupid"},
+    {word: "let (v)", ant: "stop / prevent"},
+    {word: "close (adj)", ant: "far"},
+    {word: "positive (adj)", ant: "negative"},
+    {word: "careless (adj)", ant: "careful"},
+    {word: "polite (adj)", ant: "rude / impolite"}
+];
+
+// 6. Prefixes & Suffixes
+const affixData = [
+    {word: "comfortable (adj) → uncomfortable (adj)", affix: "un-", func: "تعطي عكس المعنى"},
+    {word: "care (n) → careless (adj)", affix: "-less", func: "تعطي معنى بدون"},
+    {word: "compete (v) → competition (n)", affix: "-tion", func: "تحول الفعل إلى اسم"},
+    {word: "careful (adj) → carefully (adv)", affix: "-ly", func: "تحول الصفة إلى ظرف"}
+];
+
+// 7. Definitions
+const defsData = [
+    {word: "decision", def: "a choice you can make"},
+    {word: "evaluate", def: "to think carefully before deciding"},
+    {word: "positive", def: "good or hopeful"},
+    {word: "negative", def: "bad or harmful"},
+    {word: "responsible", def: "to act with care and think of others"},
+    {word: "consequence", def: "the result or effect of an action"},
+    {word: "benefit", def: "to be useful to someone"},
+    {word: "careless", def: "not caring about your actions"},
+    {word: "goal", def: "something you want to achieve"},
+    {word: "injury", def: "damage to someone's body"},
+    {word: "choice", def: "an act of selecting between two or more possibilities"}
+];
+
+// 8. General Notes
+const notesData = [
+    {text: "effect (ن): 'Smoking has a bad effect on your health.'"},
+    {text: "affect (فعل): 'Smoking affects your health badly.'"},
+    {text: "let (يسمح + فعل مجرد): 'Father let us play football.'"},
+    {text: "allow (يسمح + to): 'Father allowed us to play football.'"}
+];
+
+// 9. Expressions & Prepositions
+const expPrepData = [
+    ["positive and negative sides", "جوانب إيجابية وسلبية"],
+    ["feel proud", "يشعر بالفخر"],
+    ["ask for advice", "يطلب النصيحة"],
+    ["close to", "قريب من"],
+    ["excited about", "متحمس بشأن"],
+    ["focus on", "يركز على"],
+    ["with a high score", "بدرجة عالية"],
+    ["study for a test", "يذاكر للامتحان"],
+    ["stay home", "يبقى في البيت"],
+    ["invite to", "يدعو إلى"],
+    ["lead to", "يؤدي إلى"],
+    ["proud of", "فخور بـ"]
+];
+
+// ===================== النصوص =====================
+
+// Reading Text (Youssef's Birthday Party)
+const readingText = [
+    {en: "Youssef was excited about his birthday and planned a small party after school.", ar: "كان يوسف متحمساً لعيد ميلاده وخطط لحفلة صغيرة بعد المدرسة."},
+    {en: "He invited eight close friends who had been responsible in class and finished their homework.", ar: "دعا ثمانية من أصدقائه المقربين الذين كانوا مسؤولين في الفصل وأكملوا واجباتهم المنزلية."},
+    {en: "A day before the party, two classmates asked to join.", ar: "قبل الحفلة بيوم، طلب اثنان من زملائه في الفصل الانضمام."},
+    {en: "They weren't very close to Youssef, and one had been careless in class.", ar: "لم يكونوا مقربين جداً من يوسف، وكان أحدهم مهملاً في الفصل."},
+    {en: "Youssef faced a difficult decision.", ar: "واجه يوسف قراراً صعباً."},
+    {en: "He thought, and said: 'If I let them come, the party may become too big and make others uncomfortable.'", ar: "فكر، وقال: 'إذا سمحت لهم بالحضور، قد تصبح الحفلة كبيرة جداً وتجعل الآخرين غير مرتاحين.'"},
+    {en: "'And if I say no, the two may feel left out.'", ar: "'وإذا قلت لا، قد يشعر الاثنان بالإقصاء.'"},
+    {en: "He carefully thought about the positive and negative sides of each choice.", ar: "فكر بعناية في الجوانب الإيجابية والسلبية لكل خيار."},
+    {en: "In the end, Youssef made a responsible and polite decision.", ar: "في النهاية، اتخذ يوسف قراراً مسؤولاً ومهذباً."},
+    {en: "He explained that the party was only for close friends who had behaved well, and he encouraged the boys to be more responsible in the future.", ar: "أوضح أن الحفلة كانت فقط للأصدقاء المقربين الذين تصرفوا بشكل جيد، وشجع الأولاد على أن يكونوا أكثر مسؤولية في المستقبل."},
+    {en: "To his surprise, they understood and respected his decision.", ar: "ولدهشته، فهموا قراره واحترموه."},
+    {en: "One even promised to improve.", ar: "حتى أن أحدهم وعد بالتحسن."},
+    {en: "The party was a success, and Youssef felt proud and said, 'If everyone thinks well before taking a decision, they won't make mistakes.'", ar: "كانت الحفلة ناجحة، وشعر يوسف بالفخر وقال: 'إذا فكر الجميع جيداً قبل اتخاذ القرار، فلن يرتكبوا الأخطاء.'"}
+];
+
+// Listening Text (Smart Choices)
+const listeningText = [
+    {en: "Every day, we make many decisions. Some are small, like choosing clothes. Others are big, and can affect our future.", ar: "كل يوم، نتخذ العديد من القرارات. بعضها صغير، مثل اختيار الملابس. والبعض الآخر كبير، ويمكن أن يؤثر على مستقبلنا."},
+    {en: "Making smart choices is important because all choices have consequences.", ar: "اتخاذ الخيارات الذكية مهم لأن جميع الخيارات لها عواقب."},
+    {en: "A smart choice can lead to good results, while a poor choice might cause problems.", ar: "الخيار الذكي يمكن أن يؤدي إلى نتائج جيدة، بينما قد يسبب الخيار السيئ مشاكل."},
+    {en: "To make smart choices, consider all your options.", ar: "لاتخاذ خيارات ذكية، فكر في جميع خياراتك."},
+    {en: "Then, you should think about the possible consequences of each option.", ar: "ثم، يجب أن تفكر في العواقب المحتملة لكل خيار."},
+    {en: "Also, try to focus on what is most important for your future.", ar: "حاول أيضاً التركيز على ما هو الأكثر أهمية لمستقبلك."},
+    {en: "For example, if you choose to finish your homework before playing, it will benefit your grades.", ar: "على سبيل المثال، إذا اخترت إنهاء واجبك المنزلي قبل اللعب، فسيفيد ذلك درجاتك."},
+    {en: "Remember, smart choices help us reach our goals and live happier lives.", ar: "تذكر، الخيارات الذكية تساعدنا في تحقيق أهدافنا والعيش حياة أكثر سعادة."},
+    {en: "Yesterday, I had to make a smart choice.", ar: "بالأمس، كان علي اتخاذ خيار ذكي."},
+    {en: "My friends wanted to go to the park, but I had a test today.", ar: "أراد أصدقائي الذهاب إلى الحديقة، لكن كان لدي اختبار اليوم."},
+    {en: "I really wanted to go, but I remembered my teacher's advice: 'Think about tomorrow, not just today.'", ar: "أردت حقاً الذهاب، لكنني تذكرت نصيحة معلمي: 'فكر في الغد، وليس اليوم فقط.'"},
+    {en: "I stayed home and studied.", ar: "بقيت في المنزل ودرست."},
+    {en: "Today, I passed my test with a high score!", ar: "اليوم، نجحت في اختباري بدرجة عالية!"},
+    {en: "I felt proud because I made the right decision.", ar: "شعرت بالفخر لأنني اتخذت القرار الصحيح."},
+    {en: "Smart choices are not always easy, but they help us reach our goals.", ar: "الخيارات الذكية ليست سهلة دائماً، لكنها تساعدنا في الوصول إلى أهدافنا."},
+    {en: "Now, my friends are proud of me, too.", ar: "الآن، أصدقائي فخورون بي أيضاً."}
+];
+
+// ===================== دوال HTML المساعدة =====================
+function makeWordSpans(text) {
+    const words = text.trim().split(/\s+/);
+    return words.map((w, idx) => `<span class="word" data-word-index="${idx}">${w}</span>`).join(' ');
+}
+
+// ===================== بناء الواجهة =====================
+function buildAllSections() {
+    const container = document.getElementById('sections-container');
+
+    function makePills(wordsArray, sectionId) {
+        return wordsArray.map((w, i) => {
+            const id = `${sectionId}_p${i}`;
+            const wordHtml = makeWordSpans(w[0]);
+            const speakText = cleanForSpeech(w[0]);
+            return `<div class="pill" id="${id}" data-speak="${speakText}" onclick="playOne('${id}')"><span class="en">${wordHtml}</span><span class="tr">${w[1]}</span></div>`;
+        }).join('');
+    }
+
+    function makeRuleItem(icon, sectionId, index, speakText, arText, displayText) {
+        const id = `${sectionId}_${index}`;
+        const wordHtml = makeWordSpans(displayText || speakText);
+        const finalSpeak = cleanForSpeech(speakText);
+        return `<div class="rule-item" id="${id}" data-speak="${finalSpeak}" onclick="playOne('${id}')">
+            <span class="rule-icon">${icon}</span>
+            <div class="rule-text">
+                <span class="en">${wordHtml}</span>
+                <span class="ar">${arText || ''}</span>
+            </div>
+        </div>`;
+    }
+
+    function playBar(sectionId) {
+        return `<div class="sec-play-bar">
+            <button class="big-btn" style="background:linear-gradient(135deg,var(--A),var(--A2))" onclick="playSection('${sectionId}')">▶ Play</button>
+            <button class="big-btn pause-btn" onclick="pauseAll()">⏸ Pause</button>
+            <button class="big-btn stop-btn" onclick="stopAll()">⏹ Stop</button>
+        </div>`;
+    }
+
+    function makeStorySection(title, storyData) {
+        return `<div class="story-card">
+            <div style="font-weight:bold;color:var(--A);margin-bottom:10px;">${title}</div>
+            ${storyData.map((s,i) => {
+                const id = `secStory_${title.replace(/[^a-zA-Z0-9]/g,'')}_${i}`;
+                const wordHtml = makeWordSpans(s.en);
+                const cleanEn = cleanForSpeech(s.en);
+                return `<div class="sentence" id="${id}" data-speak="${cleanEn}" onclick="playOne('${id}')">
+                    ${wordHtml}
+                </div> `;
+            }).join('')}
+            <div class="story-ar">${storyData.map(s => s.ar).join(' ')}</div>
+        </div>`;
+    }
+
+    function makeNotesSection(title, notesArray) {
+        return `<div class="story-card">
+            <div style="font-weight:bold;color:var(--A);margin-bottom:10px;">${title}</div>
+            ${notesArray.map((n,i) => {
+                const id = `secNotes_${title.replace(/[^a-zA-Z0-9]/g,'')}_${i}`;
+                const displayText = n.text;
+                return `<div class="sentence" id="${id}" data-speak="${cleanForSpeech(displayText)}" onclick="playOne('${id}')">
+                    ${makeWordSpans(displayText)}
+                </div> `;
+            }).join('')}
+        </div>`;
+    }
+
+    const sections = [
+        { title:"🔑 Key Vocabulary", id:"secKeyL1L2", content: `<div class="info-box"><div class="info-title">Key Vocabulary (Lessons 1 & 2)</div><div class="vocab">${makePills(keyVocabL1L2, "secKeyL1L2")}</div></div>` },
+        { title:"📚 Vocabulary on Reading (Lesson 1)", id:"secL1", content: `<div class="info-box"><div class="info-title">Vocabulary on Reading and Listening (Lesson 1)</div><div class="vocab">${makePills(l1Vocab, "secL1")}</div></div>` },
+        { title:"📚 Vocabulary on Reading (Lesson 2)", id:"secL2", content: `<div class="info-box"><div class="info-title">Vocabulary on Reading and Listening (Lesson 2)</div><div class="vocab">${makePills(l2Vocab, "secL2")}</div></div>` },
+        { title:"🔗 Collocations", id:"secCollocations", content: `<div class="rules-grid">${collocationsData.map((c,i) => makeRuleItem('🔗', 'secCollocations', i, c[0], c[1], c[0])).join('')}</div>` },
+        { title:"🔄 Synonyms", id:"secSyn", content: `<div class="rules-grid">${synData.map((s,i) => makeRuleItem('↔️', 'secSyn', i, `${s.word} | ${s.syn}`, s.syn, s.word)).join('')}</div>` },
+        { title:"🚫 Antonyms", id:"secAnt", content: `<div class="rules-grid">${antData.map((a,i) => makeRuleItem('🛑', 'secAnt', i, `${a.word} | ${a.ant}`, a.ant, a.word)).join('')}</div>` },
+        { title:"🔚 Prefixes & Suffixes", id:"secAffix", content: `<div class="rules-grid">${affixData.map((p,i) => makeRuleItem('🔤', 'secAffix', i, `${p.word} | ${p.affix}`, `${p.affix} ${p.func}`, p.word)).join('')}</div>` },
+        { title:"📝 Definitions", id:"secDefs", content: `<div class="rules-grid">${defsData.map((d,i) => makeRuleItem('📖', 'secDefs', i, `${d.word} | ${d.def}`, d.def, d.word)).join('')}</div>` },
+        { title:"📝 General Notes", id:"secNotes", content: makeNotesSection("Notes on Reading & Listening", notesData) },
+        { title:"💬 Expressions & Prepositions", id:"secExpPrep", content: `<div class="rules-grid">${expPrepData.map((e,i) => makeRuleItem('💡', 'secExpPrep', i, e[0], e[1], e[0])).join('')}</div>` },
+        { title:"📖 Reading Text (Lesson 1)", id:"secRead", content: makeStorySection("Youssef's Decision", readingText) },
+        { title:"🎧 Listening Text (Lesson 2)", id:"secListen", content: makeStorySection("Smart Choices", listeningText) }
+    ];
+
+    let html = '';
+    sections.forEach(sec => {
+        html += `<div class="section-block" id="${sec.id}">
+            <div class="sec-title">${sec.title}</div>
+            <div class="sec-body">
+                ${playBar(sec.id)}
+                ${sec.content}
+            </div>
+        </div>`;
+    });
+    container.innerHTML = html;
+}
+
+// ===================== نظام الصوت والمزامنة =====================
+const rateRange = document.getElementById('rateRange');
+const rateBadge = document.getElementById('rateBadge');
+const fabPause = document.getElementById('fabPause');
+
+const savedRate = localStorage.getItem('speechRate') || 1;
+rateRange.value = savedRate;
+rateBadge.textContent = parseFloat(savedRate).toFixed(1)+'x';
+rateRange.addEventListener('input', () => {
+    const val = parseFloat(rateRange.value).toFixed(1);
+    rateBadge.textContent = val+'x';
+    localStorage.setItem('speechRate', val);
+});
+
+let voices = [];
+let voiceLoadAttempt = 0;
+const MAX_VOICE_LOAD_ATTEMPTS = 6;
+const VOICE_RETRY_DELAYS = [0, 150, 400, 800, 1500, 2500];
+
+const normalizeVoiceLang = (lang) => String(lang || '').replace('_', '-');
+const isVoiceLangMatch = (voiceLang, targetLang) => {
+    const normalized = normalizeVoiceLang(voiceLang).toLowerCase();
+    const target = targetLang.toLowerCase();
+    return normalized === target || normalized.startsWith(target + '-');
+};
+const voiceQualityScore = (voice) => {
+    const name = String(voice.name || '').toLowerCase();
+    let score = 0;
+    if (name.includes('google')) score += 30;
+    if (name.includes('microsoft')) score += 25;
+    if (name.includes('samantha')) score += 20;
+    if (voice.localService) score += 2;
+    return score;
+};
+const sortVoicesByQuality = (voiceList) => [...voiceList].sort((a, b) => {
+    const scoreDifference = voiceQualityScore(b) - voiceQualityScore(a);
+    return scoreDifference || String(a.name || '').localeCompare(String(b.name || ''));
+});
+
+function loadVoices() {
+    const availableVoices = window.speechSynthesis.getVoices();
+    if (availableVoices.length) {
+        voices = availableVoices;
+        voiceLoadAttempt = 0;
+        populateVoiceSelect();
+        return;
+    }
+
+    if (voiceLoadAttempt < MAX_VOICE_LOAD_ATTEMPTS) {
+        const delay = VOICE_RETRY_DELAYS[voiceLoadAttempt] || VOICE_RETRY_DELAYS[VOICE_RETRY_DELAYS.length - 1];
+        voiceLoadAttempt++;
+        window.setTimeout(loadVoices, delay);
+    }
+}
+
+function populateVoiceSelect() {
+    const vs = document.getElementById('voiceSelect');
+    const note = document.getElementById('voiceNote');
+    if (!vs || !voices.length) return;
+
+    const englishVoices = voices.filter(v =>
+        isVoiceLangMatch(v.lang, 'en-US') || isVoiceLangMatch(v.lang, 'en-GB')
+    );
+    const displayedVoices = englishVoices.length ? sortVoicesByQuality(englishVoices) :
+        sortVoicesByQuality(voices.filter(v => normalizeVoiceLang(v.lang).toLowerCase().startsWith('en')));
+
+    if (!displayedVoices.length) {
+        note.textContent = '⚠️ No English voice found.';
+        return;
+    }
+
+    note.textContent = englishVoices.length ? '' : '⚠️ No US/UK voice found; showing English voices.';
+    const savedURI = localStorage.getItem('voiceURI');
+    const savedLang = localStorage.getItem('voiceLang');
+    vs.innerHTML = displayedVoices.map((voice) => {
+        const lang = normalizeVoiceLang(voice.lang);
+        const label = `${isVoiceLangMatch(lang, 'en-US') ? '🇺🇸 American' : isVoiceLangMatch(lang, 'en-GB') ? '🇬🇧 British' : 'English'} — ${voice.name} (${lang})`;
+        const option = document.createElement('option');
+        option.value = voice.voiceURI;
+        option.textContent = label;
+        option.dataset.lang = lang;
+        return option.outerHTML;
+    }).join('');
+
+    const savedOption = [...vs.options].find(option => option.value === savedURI) ||
+        [...vs.options].find(option => option.dataset.lang === savedLang);
+    vs.value = savedOption ? savedOption.value : vs.options[0].value;
+    const selected = voices.find(v => v.voiceURI === vs.value) || displayedVoices[0];
+    localStorage.setItem('voiceURI', selected.voiceURI);
+    localStorage.setItem('voiceLang', normalizeVoiceLang(selected.lang));
+}
+
+document.getElementById('voiceSelect').addEventListener('change', function() {
+    const selected = voices.find(v => v.voiceURI === this.value);
+    if (selected) {
+        localStorage.setItem('voiceURI', selected.voiceURI);
+        localStorage.setItem('voiceLang', normalizeVoiceLang(selected.lang));
+    }
+});
+
+function getSelectedVoice() {
+    const select = document.getElementById('voiceSelect');
+    const savedURI = localStorage.getItem('voiceURI');
+    const savedLang = localStorage.getItem('voiceLang');
+    const selectedURI = savedURI || (select && select.value);
+    return voices.find(v => v.voiceURI === selectedURI) ||
+        voices.find(v => savedLang && normalizeVoiceLang(v.lang) === savedLang) ||
+        voices.find(v => select && v.voiceURI === select.value) || null;
+}
+
+window._q = []; window._qi = 0;
+window._currentUtterance = null;
+let currentHighlightedId = null;
+
+function clearAllHighlights() {
+    document.querySelectorAll('.active-sent').forEach(e => e.classList.remove('active-sent'));
+    document.querySelectorAll('.word.highlight').forEach(e => e.classList.remove('highlight'));
+    currentHighlightedId = null;
+}
+
+function showFab(show) {
+    if (show) fabPause.classList.add('show');
+    else fabPause.classList.remove('show');
+}
+
+function updateFabIcon() {
+    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+        fabPause.innerHTML = '⏸️';
+    } else if (window.speechSynthesis.paused) {
+        fabPause.innerHTML = '▶️';
+    } else {
+        fabPause.innerHTML = '⏯️';
+    }
+}
+
+function playQueue() {
+    if (window._qi >= window._q.length) {
+        clearAllHighlights();
+        showFab(false);
+        return;
+    }
+    const item = window._q[window._qi];
+    const el = document.getElementById(item.id);
+    
+    if (currentHighlightedId !== item.id) {
+        clearAllHighlights();
+        if (el) {
+            el.classList.add('active-sent');
+            el.scrollIntoView({behavior:'smooth',block:'nearest'});
+            currentHighlightedId = item.id;
+        }
+    }
+
+    const u = new SpeechSynthesisUtterance(item.text);
+    u.rate = parseFloat(rateRange.value) || 1;
+    const voice = getSelectedVoice();
+    // Set the language explicitly; several browsers otherwise ignore the selected voice.
+    u.lang = voice ? normalizeVoiceLang(voice.lang) : (localStorage.getItem('voiceLang') || 'en-US');
+    if (voice) u.voice = voice;
+
+    u.onboundary = (event) => {
+        if (event.name === 'word' && el) {
+            const wordSpans = el.querySelectorAll('.word');
+            const textUntilIndex = item.text.substring(0, event.charIndex);
+            const wordIndex = textUntilIndex.trim().split(/\s+/).filter(Boolean).length;
+            
+            wordSpans.forEach(span => span.classList.remove('highlight'));
+            if (wordSpans[wordIndex]) {
+                wordSpans[wordIndex].classList.add('highlight');
+            }
+        }
+    };
+
+    u.onstart = () => {
+        showFab(true);
+        updateFabIcon();
+    };
+
+    u.onend = function() {
+        if (el) el.querySelectorAll('.word').forEach(span => span.classList.remove('highlight'));
+        window._qi++;
+        playQueue();
+    };
+
+    u.onerror = function(e) {
+        console.warn('Speech error', e);
+        window._qi++;
+        playQueue();
+    };
+
+    u.onpause = () => updateFabIcon();
+    u.onresume = () => updateFabIcon();
+
+    window._currentUtterance = u;
+    window.speechSynthesis.speak(u);
+}
+
+function splitAndQueue(textParts, id) {
+    textParts.forEach((p) => {
+        const trimmed = cleanForSpeech(p);
+        if (trimmed) {
+            window._q.push({id: id, text: trimmed});
+        }
+    });
+}
+
+function playSection(secId) {
+    stopAll();
+    const sec = document.getElementById(secId);
+    const els = [...sec.querySelectorAll('[data-speak]')];
+    els.forEach(el => {
+        const text = el.dataset.speak;
+        const parts = text.split('|').map(p => p.trim());
+        splitAndQueue(parts, el.id);
+    });
+    window._qi = 0;
+    playQueue();
+}
+
+function playAll() {
+    stopAll();
+    const els = [...document.querySelectorAll('[data-speak]')];
+    els.forEach(el => {
+        const text = el.dataset.speak;
+        const parts = text.split('|').map(p => p.trim());
+        splitAndQueue(parts, el.id);
+    });
+    window._qi = 0;
+    playQueue();
+}
+
+function playOne(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const text = el.dataset.speak;
+    
+    stopAll();
+    const parts = text.split('|').map(p => p.trim());
+    splitAndQueue(parts, id);
+    window._qi = 0;
+    playQueue();
+}
+
+function pauseAll() {
+    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+        window.speechSynthesis.pause();
+        updateFabIcon();
+    } else if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+        updateFabIcon();
+    }
+}
+
+function stopAll() {
+    window._q = []; window._qi = 0;
+    clearAllHighlights();
+    window.speechSynthesis.cancel();
+    showFab(false);
+}
+
+function toggleFabPause() {
+    pauseAll();
+}
+
+// ===================== الثيمات =====================
+function setTheme(theme, btn) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    localStorage.setItem('theme', theme);
+}
+const savedTheme = localStorage.getItem('theme') || 'teal';
+document.documentElement.setAttribute('data-theme', savedTheme);
+document.querySelectorAll('.theme-btn').forEach(b => {
+    if (b.classList.contains('t-'+savedTheme)) b.classList.add('active');
+});
+
+// ===================== بدء التشغيل =====================
+buildAllSections();
+loadVoices();
+if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = loadVoices;
+</script>
+</body>
+</html>
